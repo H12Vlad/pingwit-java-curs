@@ -2,8 +2,8 @@ package com.pingwit.part_4.homework.task_4;
 
 public class CalculationWithoutMultiplication {
     public static void main(String[] args) {
-        int A = 5;
-        int B = 7;
+        int A = 5; // названия переменных с маленькой буквы
+        int B = 7; // названия переменных с маленькой буквы
         int result = multiply(A, B);
         System.out.println("Произведение чисел " + A + " и " + B + " равно " + result);
     }
