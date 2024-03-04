@@ -1,6 +1,5 @@
-package com.pingwit.part_5.task_1;
+package com.pingwit.part_5.homework.task_1;
 
-// Создай пакет homework и перемести туда task_1 
 public class HelpDebug {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {

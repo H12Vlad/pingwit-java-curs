@@ -11,7 +11,8 @@ public class DiamondShape {
                 System.out.print("*");
             }
             System.out.println();
-        } // вот сюда добавь абзац, чтобы циклы не сливались
+        }
+
         for (int i = size - 1; i >= 1; i--) {
             for (int j = size - i; j > 0; j--) { // этот цикл и следующий давай объеденим в один
                 System.out.print(" ");

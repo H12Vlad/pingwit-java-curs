@@ -1,5 +1,6 @@
 
 package com.pingwit.part_3.homework; // добавь в конце строки абзац, чтобы отделить пакет от названия класса
+
 public class CurrencyRates {
     public static void main(String[] args) {
         int zloty = 10;
@@ -22,7 +23,7 @@ public class CurrencyRates {
                 convertedZloty = zloty * 0.13;
                 System.out.println("Currency to Egyptian pound: " + convertedZloty);
                 break;
-                default:  // скорее всего код не отформатирован, default станет левее
+            default:
                 System.out.println("Identification ID issue: ");
         }
     }
