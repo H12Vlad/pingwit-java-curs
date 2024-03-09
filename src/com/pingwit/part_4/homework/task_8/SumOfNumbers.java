@@ -7,16 +7,21 @@ public class SumOfNumbers {
         int totalSum = 0;
 
         for (int i = 0; i <= 100; i++) {
-            totalSum += i; // давай общую сумму посчитаем один раз после цикла сложив sumEven+sumOdd
+
             if (i % 2 == 0) {
                 sumEven += i;
             } else {
                 sumOdd += i;
             }
+
         }
-        // не критично, но я бы здесь добавил абзац, чтобы разделить логические блоки
+
+        totalSum = sumEven + sumOdd;
+
         System.out.println("Сумма четных чисел: " + sumEven);
+
         System.out.println("Сумма нечетных чисел: " + sumOdd);
+
         System.out.println("Общая сумма всех чисел: " + totalSum);
     }
 }
