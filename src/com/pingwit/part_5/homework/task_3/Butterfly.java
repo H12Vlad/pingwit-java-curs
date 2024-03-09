@@ -1,58 +1,77 @@
 package com.pingwit.part_5.homework.task_3;
 
-import java.util.Scanner; // перед и после импорта должен быть абзац
+import java.util.Scanner;
 
 public class Butterfly {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите размер бабочки (нечетное число): ");
-        int size = scanner.nextInt();
-        scanner.close();//это лишнее
+        int size;
 
-        if (size % 2 == 0) {
-            System.out.println("Размер должен быть нечетным!"); // если добавил такую проверку, то сделай это в цикле, чтобы программа заново попросила ввести число, а не завершила работу
-            return;
+        while (true) {
+            System.out.print("Введите размер бабочки (нечетное число) или 0 для выхода: ");
+            size = scanner.nextInt();
+            if (size == 0) {
+                System.out.println("Работа программы завершена.");
+                break;
+            }
+            if (size % 2 == 0) {
+                System.out.println("Размер должен быть нечетным!");
+            } else {
+                drawButterfly(size);
+            }
         }
 
-        drawButterfly(size);
+        scanner.close();
     }
 
-    /*
-    - вместо * печатай цифры, так будет проще искать ошибку
-    - пока еще подумай над решением
-
-    Если размер 3, то должно вывести
-        1   1
-        12 21
-        12321
-        12 21
-        1   1
-    */
     public static void drawButterfly(int size) {
         int halfSize = size / 2;
-        for (int i = 0; i < halfSize; i++) {
-            for (int j = 0; j < i + 1; j++) { // объедени 3 цикла в 1
-                System.out.print("1 ");
+        int leftBorder = 1;
+        int rightBorder = size * 2 - 1;
+
+
+        for (int i = 0; i < size; i++) {
+            int printer = 1;
+            for (int j = 0; j < size * 2; j++) {
+                if (j < leftBorder) {
+                    System.out.print(printer);
+                    printer++;
+                } else if (j < rightBorder) {
+                    System.out.print(" ");
+                } else {
+                    printer--;
+                    System.out.print(printer);
+                }
             }
-            for (int j = 0; j < size - 2 * (i + 1); j++) {
-                System.out.print("  ");
-            }
-            for (int j = 0; j < i + 1; j++) {
-                System.out.print("2 ");
-            }
+            leftBorder++;
+            rightBorder--;
             System.out.println();
-        } // добавь абзац
-        for (int i = halfSize; i >= 0; i--) {
-            for (int j = 0; j < i + 1; j++) { // объедени 3 цикла в 1
-                System.out.print("3 ");
+            if (size % 2 == 0) {
+                System.out.println("Размер должен быть нечетным!");
+
             }
-            for (int j = 0; j < size - 2 * (i + 1); j++) {
-                System.out.print("  ");
+        }
+        for (int i = 0; i < size; i++) {
+            int printer = 1;
+            for (int j = 0; j < size * 2; j++) {
+                if (j < leftBorder - 2) {
+                    System.out.print(printer);
+                    printer++;
+                } else if (j < rightBorder + 2) {
+                    System.out.print(" ");
+                } else {
+                    printer--;
+                    System.out.print(printer);
+                }
             }
-            for (int j = 0; j < i + 1; j++) {
-                System.out.print("4 ");
-            }
+            leftBorder--;
+            rightBorder++;
             System.out.println();
+            if (size % 2 == 0) {
+                System.out.println("Размер должен быть нечетным!");
+            }
+
         }
     }
 }
+
