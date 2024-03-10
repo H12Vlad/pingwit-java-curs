@@ -2,6 +2,7 @@ package com.pingwit.part_4.homework.task_9;
 
 import java.util.Scanner;
 
+// а ты запускал свою программу? Пока вывод совсем несоответствует от ожидаемого
 public class Rhombus {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
