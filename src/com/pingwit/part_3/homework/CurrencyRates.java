@@ -1,5 +1,5 @@
 
-package com.pingwit.part_3.homework; // добавь в конце строки абзац, чтобы отделить пакет от названия класса
+package com.pingwit.part_3.homework;
 
 public class CurrencyRates {
     public static void main(String[] args) {

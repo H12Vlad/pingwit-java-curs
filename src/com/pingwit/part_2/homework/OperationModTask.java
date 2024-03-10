@@ -1,6 +1,5 @@
 package com.pingwit.part_2.homework;
 
-
 public class OperationModTask {
     public static void main(String[] args) {
         System.out.println("Part_1 : ");
