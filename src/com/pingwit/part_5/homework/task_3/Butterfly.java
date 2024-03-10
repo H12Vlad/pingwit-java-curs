@@ -46,9 +46,9 @@ public class Butterfly {
             leftBorder++;
             rightBorder--;
             System.out.println();
-            if (size % 2 == 0) {
+            if (size % 2 == 0) { // а зачем тебе в этом методе эта проверка? у тебя такая же в 18 строке
                 System.out.println("Размер должен быть нечетным!");
-
+// лишняя строка
             }
         }
         for (int i = 0; i < size; i++) {
@@ -67,10 +67,10 @@ public class Butterfly {
             leftBorder--;
             rightBorder++;
             System.out.println();
-            if (size % 2 == 0) {
+            if (size % 2 == 0) { // а зачем тебе в этом методе эта проверка? у тебя такая же в 18 строке
                 System.out.println("Размер должен быть нечетным!");
             }
-
+// лишняя строка
         }
     }
 }
