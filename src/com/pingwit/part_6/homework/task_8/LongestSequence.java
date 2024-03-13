@@ -8,6 +8,13 @@ public class LongestSequence {
         int startIndex = 0;
         int currentLength = 1;
 
+        /*
+        Возможно тебе больше понравится вариант с
+        for (int i = 1; i <= array.length; i++) {
+            if (i < array.length && array[i] == array[i - 1]) {
+
+        тогда можно будет убрать if после цикла, потому что такое дублирование кода очень опасно, если необходимо будет делать правки   
+        */
         for (int i = 1; i < array.length; i++) {
             if (array[i] == array[i - 1]) {
                 currentLength++;
