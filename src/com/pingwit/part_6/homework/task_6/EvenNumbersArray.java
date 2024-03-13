@@ -10,7 +10,7 @@ public class EvenNumbersArray {
         System.out.println("Массив с четными элементами: " + Arrays.toString(evenNumbersArray));
     }
 
-    public static int[] getEvenNumbersArray(int[] originalArray) {
+    public static int[] getEvenNumbersArray(int[] originalArray) { // очень хорошо
         int count = 0;
 
         for (int num : originalArray) {
