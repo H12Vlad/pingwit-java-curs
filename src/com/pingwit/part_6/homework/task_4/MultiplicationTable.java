@@ -6,6 +6,13 @@ public class MultiplicationTable {
 
         int[][] multiplicationTable = new int[size][size];
 
+        /*
+        i = 1; i <= size
+        j = 1; j <= size
+        и тогда
+        multiplicationTable[i][j] = (i) * (j);
+        но твой вариант тоже ок
+        */
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 multiplicationTable[i][j] = (i + 1) * (j + 1);
