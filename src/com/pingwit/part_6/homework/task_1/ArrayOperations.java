@@ -8,7 +8,7 @@ public class ArrayOperations {
 
         int[] array = new int[3];
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) { // Я думаю тебе можно начать пользоваться Random random = new Random -> random.nextInt()
             System.out.print("Введите элемент массива #" + (i + 1) + ": ");
             array[i] = scanner.nextInt();
         }
@@ -30,6 +30,6 @@ public class ArrayOperations {
         System.out.println("Наименьшее число: " + min);
         System.out.println("Наибольшее число: " + max);
 
-        scanner.close();
+        scanner.close(); // в случае со Scanner это делать не обязательно
     }
 }
