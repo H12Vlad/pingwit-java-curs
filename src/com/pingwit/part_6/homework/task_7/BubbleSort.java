@@ -10,7 +10,7 @@ public class BubbleSort {
         for (int num : array) {
             System.out.print(num + " ");
         }
-    }
+    } // методы разделяй абзацем
     public static void bubbleSort(int[] array) {
         int n = array.length;
         boolean swapped;
