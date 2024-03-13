@@ -10,7 +10,7 @@ public class AverageOfArray {
             sum += num;
         }
 
-        double average = (double) sum / array.length;
+        double average = (double) sum / array.length; // чтобы не кастить можно изначально использовать массив double[], но пока не критично
 
         System.out.println("Среднее арифметическое элементов массива: " + average);
     }
