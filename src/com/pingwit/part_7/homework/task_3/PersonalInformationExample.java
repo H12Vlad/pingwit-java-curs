@@ -8,6 +8,9 @@ public class PersonalInformationExample {
         people[2] = new PersonalInformation("Charlie", 35);
 
         for (int i = 0; i < people.length; i++) {
+            /* у тебя в PersonalInformation переопределен метод toString(), поэтому попробуй в цикле использовать
+            System.out.println(people[i]);
+             */
             System.out.println("PersonalInformation " + (i + 1) + ": " + people[i]);
         }
     }

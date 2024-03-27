@@ -1,6 +1,6 @@
 package com.pingwit.part_7.homework.task_3;
 
-public class PersonalInformation {
+public class PersonalInformation { // этот класс можно было не создавать и взять из task_2. Если класс объявлен как public -> его можно использовать где угодно
     private String name;
     private int age;
 

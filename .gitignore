@@ -1,4 +1,6 @@
 ### IntelliJ IDEA ###
+.gitignore
+pingwit-java-curs(Vladyslav-Hoidra).iml
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/

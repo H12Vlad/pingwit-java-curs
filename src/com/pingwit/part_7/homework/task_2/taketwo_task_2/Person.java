@@ -1,6 +1,7 @@
 package com.pingwit.part_7.homework.task_2.taketwo_task_2;
 
-public class Person {
+// отформатируй код
+public class Person { // этот вариант лучше
     String name;
     int age;
 
@@ -16,6 +17,7 @@ public class Person {
         System.out.println("Создан новый экземпляр класса Person");
     }
 
+    // давай уберем этот код отсюда
 //    public static void main(String[] args) {
 //        Person person = new Person();
 //        System.out.println(person.age);

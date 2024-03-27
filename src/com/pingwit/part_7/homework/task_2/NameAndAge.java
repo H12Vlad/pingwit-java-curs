@@ -1,12 +1,12 @@
 package com.pingwit.part_7.homework.task_2;
 
-public class NameAndAge {
+public class NameAndAge { // -> Person, Student, Dog... Не используй названия вроде NameAndAge
 
-    static String name;
-    static int age;
+    static String name; // это поле не должно быть static
+    static int age;// это поле не должно быть static
 
     public NameAndAge(String name, int age) {
-        System.out.println("Constructor: ");
+        System.out.println("Constructor: "); // а зачем пробел после ":" ?
         this.name = name;
         this.age = age;
     }
