@@ -1,7 +1,7 @@
 package com.pingwit.part_7.homework.task_1;
 
 public class ExecutionQueue {
-    public static String msg; //в примере это поле private, в данном случае не критично, но будь внимательнее
+    private static String msg;
 
     static {
         msg = "static block";

@@ -5,7 +5,6 @@ public class PersonExample {
         Person person = new Person();
         System.out.println(person.age);
         System.out.println(person.name);
-// лишняя строка, удали
     }
 
 }

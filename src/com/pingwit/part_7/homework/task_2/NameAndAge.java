@@ -2,11 +2,11 @@ package com.pingwit.part_7.homework.task_2;
 
 public class NameAndAge { // -> Person, Student, Dog... Не используй названия вроде NameAndAge
 
-    static String name; // это поле не должно быть static
-    static int age;// это поле не должно быть static
+    String name;
+    int age;
 
     public NameAndAge(String name, int age) {
-        System.out.println("Constructor: "); // а зачем пробел после ":" ?
+        System.out.println("Constructor:");
         this.name = name;
         this.age = age;
     }
