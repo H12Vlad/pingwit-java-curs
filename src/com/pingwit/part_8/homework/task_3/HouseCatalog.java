@@ -1,4 +1,4 @@
-package com.pingwit.part_8.task_3;
+package com.pingwit.part_8.homework.task_3;
 
 public class HouseCatalog {
         private House[] houses;
