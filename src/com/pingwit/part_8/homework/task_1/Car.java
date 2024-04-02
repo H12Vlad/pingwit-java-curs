@@ -1,15 +1,15 @@
 package com.pingwit.part_8.homework.task_1;
 
-// отформатируй код
-public class Car {
-    private  String brand;
-    private String model;
-    private int numbersOfDoors; // numbersOfDoors -> numberOfDoors / doors
 
-    public Car(String brand, String model , int numbersOfDoors){
+public class Car {
+    private String brand;
+    private String model;
+    private int doors;
+
+    public Car(String brand, String model, int numbersOfDoors) {
         this.brand = brand;
         this.model = model;
-        this.numbersOfDoors = numbersOfDoors;
+        this.doors = numbersOfDoors;
     }
 
     public String getBrand() {
@@ -29,11 +29,11 @@ public class Car {
     }
 
     public int getNumbersOfDoors() {
-        return numbersOfDoors;
+        return doors;
     }
 
     public void setNumbersOfDoors(int numbersOfDoors) {
-        this.numbersOfDoors = numbersOfDoors;
+        this.doors = numbersOfDoors;
     }
 }
 

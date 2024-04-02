@@ -1,22 +1,22 @@
 package com.pingwit.part_8.homework.task_3;
 
 public class CityApartmentBuilding {
-    private int numberOfFloors; // numberOfFloors -> floors
+    private int floors;
     private boolean heatingOn;
-    private int numberOfResidents; // numberOfResidents -> residents
+    private int residents;
 
     public CityApartmentBuilding(int numberOfFloors, boolean heatingOn, int numberOfResidents) {
-        this.numberOfFloors = numberOfFloors;
+        this.floors = numberOfFloors;
         this.heatingOn = heatingOn;
-        this.numberOfResidents = numberOfResidents;
+        this.residents = numberOfResidents;
     }
 
     public int getNumberOfFloors() {
-        return numberOfFloors;
+        return floors;
     }
 
     public void setNumberOfFloors(int numberOfFloors) {
-        this.numberOfFloors = numberOfFloors;
+        this.floors = numberOfFloors;
     }
 
     public boolean isHeatingOn() {
@@ -28,10 +28,10 @@ public class CityApartmentBuilding {
     }
 
     public int getNumberOfResidents() {
-        return numberOfResidents;
+        return residents;
     }
 
     public void setNumberOfResidents(int numberOfResidents) {
-        this.numberOfResidents = numberOfResidents;
+        this.residents = numberOfResidents;
     }
 }
