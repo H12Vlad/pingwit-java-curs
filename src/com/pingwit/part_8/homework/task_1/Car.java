@@ -1,9 +1,10 @@
 package com.pingwit.part_8.homework.task_1;
 
+// отформатируй код
 public class Car {
     private  String brand;
     private String model;
-    private int numbersOfDoors;
+    private int numbersOfDoors; // numbersOfDoors -> numberOfDoors / doors
 
     public Car(String brand, String model , int numbersOfDoors){
         this.brand = brand;

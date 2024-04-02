@@ -1,9 +1,9 @@
 package com.pingwit.part_8.homework.task_3;
 
 public class CountryHouse {
-    private int numberOfFloors;
+    private int numberOfFloors; // numberOfFloors -> floors
     private boolean heatingOn;
-    private int numberOfResidents;
+    private int numberOfResidents; // numberOfResidents -> residents
 
     public CountryHouse(int numberOfFloors, boolean heatingOn, int numberOfResidents) {
         this.numberOfFloors = numberOfFloors;
