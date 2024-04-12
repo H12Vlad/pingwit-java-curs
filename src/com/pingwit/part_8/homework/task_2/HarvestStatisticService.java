@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-// А ты проверял решение задачи? Я не нашел класса с методом main(), код выглядит ок, но необходимо запустить и проверить
 public class HarvestStatisticService {
     public HarvestStatistic[] calculateStatistics(Harvest[] harvests) {
         Map<String, BigDecimal> plantWeights = new HashMap<>();

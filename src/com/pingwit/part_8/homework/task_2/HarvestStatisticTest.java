@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 public class HarvestStatisticTest {
     public static void main(String[] args) {
-        // Создаем несколько объектов Harvest
         Harvest[] harvests = {
                 new Harvest(1L, "Поле 1", "Пшеница", new BigDecimal("100")),
                 new Harvest(2L, "Поле 2", "Пшеница", new BigDecimal("150")),
@@ -13,14 +12,21 @@ public class HarvestStatisticTest {
                 new Harvest(5L, "Поле 2", "Картофель", new BigDecimal("300"))
         };
 
-        // Создаем объект HarvestStatisticService
         HarvestStatisticService service = new HarvestStatisticService();
 
-        // Вычисляем статистику по урожаю
         HarvestStatistic[] statistics = service.calculateStatistics(harvests);
 
-        // Выводим статистику
         for (HarvestStatistic statistic : statistics) {
+            System.out.println("Растение: " + statistic.getPlant() + ", Общий вес урожая: " + statistic.getTotalWeight());
+        }
+
+        System.out.println("===after===");
+        HarvestStatisticsArrayVersion test = new HarvestStatisticsArrayVersion();
+        HarvestStatistic[] statisticsTest = test.calculateStatistics(harvests);
+        for (HarvestStatistic statistic : statisticsTest) {
+            if(statistic == null){
+                break;
+            }
             System.out.println("Растение: " + statistic.getPlant() + ", Общий вес урожая: " + statistic.getTotalWeight());
         }
     }
