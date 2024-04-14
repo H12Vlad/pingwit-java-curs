@@ -9,7 +9,7 @@ public class ProcessorGo {
                 new Person("Lukas", "Novák", 2010, "male", "single"),
         };
         ClientDataProcessor processor = new ClientDataProcessor();
-        for (Person person : people){
+        for (Person person : people) {
             processor.processPerson(person);
         }
     }

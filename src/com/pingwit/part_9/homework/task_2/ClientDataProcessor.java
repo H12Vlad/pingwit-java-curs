@@ -10,8 +10,7 @@ public class ClientDataProcessor {
             } else {
                 System.out.println("Невозможно определить пол клиента");
             }
-        }else {
-            // Выводим сообщение об ошибке, если данные не удовлетворяют условиям
+        } else {
             System.out.println("Данные клиента " + person.getName() + " " + person.getSurname() + " не соответствуют требованиям, просьба покинуть наш сайт!");
         }
     }
