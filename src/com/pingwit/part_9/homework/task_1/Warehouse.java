@@ -12,42 +12,43 @@ public class Warehouse {
     int[] numbers;
     int index;
 
-        public Warehouse(int[] numbers) {
+    public Warehouse(int[] numbers) {
         this.numbers = numbers;
     }
 
 
-//    public int next() {
-//        if (index == numbers.length - 1) {
-//            index = 0;
-//        } else {
-//            index++;
-//        }
-//        return numbers[index];
-//
-//    }
-        public int next () {
-            index = (index + 1) % numbers.length;
-            return numbers[index];
+        public int next() {
+        if (index == numbers.length - 1) {
+            index = 0;
+        } else {
+            index++;
         }
+        return numbers[index];
 
-        public int[] numbers () {
-            int[] clone = new int[numbers.length];
-            for (int i = 0; i < clone.length; i++) {
-                clone[i] = numbers[i];
-            }
-            return clone;
-
-        }
-        public int[] getArray () {
-            return Arrays.copyOf(numbers, numbers.length);
-        }
-
-        @Override
-        public String toString () {
-            return "Warehouse{" +
-                    "numbers=" + Arrays.toString(numbers) +
-                    ", index=" + index +
-                    '}';
-        }
     }
+//    public int next() {
+//        index = (index + 1) % numbers.length;
+//        return numbers[index];
+//    }
+
+    public int[] numbers() {
+        int[] clone = new int[numbers.length];
+        for (int i = 0; i < clone.length; i++) {
+            clone[i] = numbers[i];
+        }
+        return clone;
+
+    }
+
+    public int[] getArray() {
+        return Arrays.copyOf(numbers, numbers.length);
+    }
+
+    @Override
+    public String toString() {
+        return "Warehouse{" +
+                "numbers = " + Arrays.toString(numbers) +
+                ", index = " + index +
+                '}';
+    }
+}
