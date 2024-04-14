@@ -7,7 +7,8 @@ public class ImmutableExample {
         int[] numbers = {1, 2, 3, 4, 5};
         Warehouse citadel = new Warehouse(numbers);
         System.out.println(citadel);
-        System.out.println("Next element: " + citadel.next());
+        // первый вызов метода next() возвращает двойку, а должен единицу. Подумай как это можно сделать не меняя метод next()
+        System.out.println("Next element: " + citadel.next()); // давай заменим 3 одинаковые строки циклом
         System.out.println("Next element: " + citadel.next());
         System.out.println("Next element: " + citadel.next());
         System.out.println("Array: " + Arrays.toString(citadel.getArray()));

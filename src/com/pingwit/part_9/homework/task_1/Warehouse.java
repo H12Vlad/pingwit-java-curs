@@ -9,8 +9,8 @@ import java.util.Arrays;
 (Возможно я знаю но скорее всего я запутался)
  */
 public class Warehouse {
-    int[] numbers;
-    int index;
+    int[] numbers; // поля класса сделай приватными
+    int index; // поля класса сделай приватными
 
     public Warehouse(int[] numbers) {
         this.numbers = numbers;
@@ -24,7 +24,7 @@ public class Warehouse {
         }
         return numbers[index];
     }
-
+//удали ненужные комментарии
     //    public int next() {
 //        index = (index + 1) % numbers.length;
 //        return numbers[index];

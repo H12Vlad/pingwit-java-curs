@@ -7,7 +7,7 @@ public class ProcessorGo {
                 new Person("Max", "Müller", 2002, "male", "single"),
                 new Person("Sophie", "Dubois", 2001, "female", "single"),
                 new Person("Lukas", "Novák", 2010, "male", "single"),
-        };
+        };//добавь сюда абзац
         ClientDataProcessor processor = new ClientDataProcessor();
         for (Person person : people) {
             processor.processPerson(person);

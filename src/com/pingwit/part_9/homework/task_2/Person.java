@@ -1,11 +1,12 @@
 package com.pingwit.part_9.homework.task_2;
 
 public class Person {
+    // ВСЕ поля класса сделай приватными, для этого и нужны геттеры и сеттеры
     String name;
     String surname;
     int birthYear;
-    String gender;
-    String maritalStatus;
+    String gender; // в задании сказано, что я могу пол указать только мужской или женский, если поле String, то нету никаких ограничений. Нужен другой тип
+    String maritalStatus; // в задании сказано, что я могу семейный статус указать только single/married, если поле String, то нету никаких ограничений. Нужен другой тип
 
     public Person(String name, String surname, int birthYear, String gender, String maritalStatus) {
         this.name = name;
