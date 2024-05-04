@@ -2,15 +2,10 @@ package com.pingwit.part_9.homework.task_1;
 
 import java.util.Arrays;
 
-/*
-Я хз что делать с методом next ()
-Я даже не имею представление как должно выглядеть вывод на экран который написан
-" В классе должен быть метод next() который возвращает следующий элемент массива."
-(Возможно я знаю но скорее всего я запутался)
- */
 public class Warehouse {
-    int[] numbers; // поля класса сделай приватными
-    int index; // поля класса сделай приватными
+
+    private int[] numbers;
+   private int index = -1;
 
     public Warehouse(int[] numbers) {
         this.numbers = numbers;
@@ -24,11 +19,6 @@ public class Warehouse {
         }
         return numbers[index];
     }
-//удали ненужные комментарии
-    //    public int next() {
-//        index = (index + 1) % numbers.length;
-//        return numbers[index];
-//    }
     public int[] numbers() {
         int[] clone = new int[numbers.length];
         for (int i = 0; i < clone.length; i++) {

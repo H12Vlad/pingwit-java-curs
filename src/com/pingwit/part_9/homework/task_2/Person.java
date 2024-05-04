@@ -1,19 +1,18 @@
 package com.pingwit.part_9.homework.task_2;
 
 public class Person {
-    // ВСЕ поля класса сделай приватными, для этого и нужны геттеры и сеттеры
-    String name;
-    String surname;
-    int birthYear;
-    String gender; // в задании сказано, что я могу пол указать только мужской или женский, если поле String, то нету никаких ограничений. Нужен другой тип
-    String maritalStatus; // в задании сказано, что я могу семейный статус указать только single/married, если поле String, то нету никаких ограничений. Нужен другой тип
+    private String name;
+    private String surname;
+    private int birthYear;
+    private Gender gender;
+    private FamilyStatus familyStatus;
 
-    public Person(String name, String surname, int birthYear, String gender, String maritalStatus) {
+    public Person(String name, String surname, int birthYear, Gender gender, FamilyStatus familyStatus) {
         this.name = name;
         this.surname = surname;
         this.birthYear = birthYear;
         this.gender = gender;
-        this.maritalStatus = maritalStatus;
+        this.familyStatus = familyStatus;
     }
 
     public String getName() {
@@ -40,19 +39,19 @@ public class Person {
         this.birthYear = birthYear;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    public String getMaritalStatus() {
-        return maritalStatus;
+    public FamilyStatus getFamilyStatus() {
+        return familyStatus;
     }
 
-    public void setMaritalStatus(String maritalStatus) {
-        this.maritalStatus = maritalStatus;
+    public void setFamilyStatus(FamilyStatus familyStatus) {
+        this.familyStatus = familyStatus;
     }
 }
