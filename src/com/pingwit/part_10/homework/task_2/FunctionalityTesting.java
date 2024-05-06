@@ -6,11 +6,11 @@ public class FunctionalityTesting {
         Transmission transmission = new Transmission();
         Car car = new Car(engine, transmission);
 
-        engine.stopEngine();
+        engine.stopEngine();// все управление автомобилем в методе main только через переменную car
         car.drive();
-        transmission.shiftUp();
+        transmission.shiftUp(); // все управление автомобилем в методе main только через переменную car
         car.drive();
-        engine.startEngine();
+        engine.startEngine();// все управление автомобилем в методе main только через переменную car
         car.drive();
     }
 }

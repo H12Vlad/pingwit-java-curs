@@ -14,6 +14,6 @@ public class Laptop implements Computer {
     @Override
     public void reset() {
         System.out.println("Laptop computer is resetting...");
-
+// лишняя строка, удали
     }
 }
