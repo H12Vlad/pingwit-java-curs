@@ -1,22 +1,45 @@
 package com.pingwit.part_10.homework.task_2;
 
-public class Car {
+public class Car implements CarDetails {
     private Engine engine;
     private Transmission transmission;
 
-// лишняя строка, удали
-    public Car(Engine engine, Transmission transmission) {
-        this.engine = engine;
-        this.transmission = transmission;
+    public Car() {
+        engine = new Engine();
+        transmission = new Transmission();
     }
 
+    @Override
     public void drive() {
-        if (!engine.isRunning) {
+        int ratio = 20;
+        if (!engine.isRunning()) {
             System.out.println("I can’t go, the engine is not running.");
             return;
         }
         transmission.shiftUp();
-        int speed = transmission.currentGear * 20;// 20 - это магическое число, вынеси в константу
+        int speed = transmission.getCurrentGear() * ratio;
         System.out.println("Current speed: " + speed + "km/h");
     }
+
+    @Override
+    public void startEngine() {
+        engine.start();
+    }
+
+    @Override
+    public void stopEngine() {
+        engine.stop();
+    }
+
+    @Override
+    public void shiftUp() {
+        transmission.shiftUp();
+    }
+
+    @Override
+    public void shiftDown() {
+        transmission.shiftDown();
+    }
+
+
 }

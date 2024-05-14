@@ -1,31 +1,30 @@
 package com.pingwit.part_10.homework.task_2;
 
 public class Engine {
-    boolean isRunning;// поля класса сделай приватными
+    private boolean isRunning;// поля класса сделай приватными
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setRunning(boolean running) {
+        isRunning = running;
+    }
 
     public Engine() {
-        this.isRunning = false; // в этой строке нету необходимости, значение false примитиву boolean будет автоматически присвоено при создании экземпляра класса (new Engine())
     }
 
-    public void startEngine() {
-        if (!isRunning) {
-            isRunning = true;
+    public void start() {
+        if (isRunning) {
             System.out.println("The engine is running");
         } else {
+            isRunning = true;
             System.out.println("The engine is running");
         }
-
-        // лучше избегать отрицания в коде, можно изменить твой код вот так и будет тоже самое
-        /*if (isRunning) {
-            System.out.println("The engine is running");
-        } else {
-            isRunning = true;
-            System.out.println("The engine is running");
-        }*/
     }
 
-    public void stopEngine() {
-        if (!isRunning) { // если двигатель включен, то выключить двигатель, а у тебя наоборот пока, думаю "!" здесь лишний
+    public void stop() {
+        if (isRunning) {
             isRunning = false;
             System.out.println("Engine stopped");
         } else {
