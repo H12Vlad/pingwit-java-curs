@@ -40,6 +40,4 @@ public class Car implements CarDetails {
     public void shiftDown() {
         transmission.shiftDown();
     }
-
-
 }

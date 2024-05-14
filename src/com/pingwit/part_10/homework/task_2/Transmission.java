@@ -12,6 +12,7 @@ public class Transmission {
             System.out.println("Unable to change gear higher. Maximum gear reached.");
         }
     }
+
     public void shiftDown() {
         int broadcastMin = 0;
         if (currentGear > broadcastMin) {

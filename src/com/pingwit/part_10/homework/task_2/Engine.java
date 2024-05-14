@@ -1,7 +1,7 @@
 package com.pingwit.part_10.homework.task_2;
 
 public class Engine {
-    private boolean isRunning;// поля класса сделай приватными
+    private boolean isRunning;
 
     public boolean isRunning() {
         return isRunning;
@@ -31,5 +31,4 @@ public class Engine {
             System.out.println("The engine is already stopped");
         }
     }
-
 }
