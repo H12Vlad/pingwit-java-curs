@@ -7,16 +7,16 @@ public class Engine {
         return isRunning;
     }
 
-    public void setRunning(boolean running) {
+    public void setRunning(boolean running) { // этот метод можно удалить
         isRunning = running;
     }
 
-    public Engine() {
+    public Engine() { // этот конструктор можно удалить, он будет создан автоматически
     }
 
     public void start() {
         if (isRunning) {
-            System.out.println("The engine is running");
+            System.out.println("The engine is running"); // The engine is running -> The engine is already running, мелочь, но у тебя снизу стоп так же описан
         } else {
             isRunning = true;
             System.out.println("The engine is running");

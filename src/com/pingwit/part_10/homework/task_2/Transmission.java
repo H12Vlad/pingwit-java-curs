@@ -4,7 +4,7 @@ public class Transmission {
     private int currentGear;
 
     public void shiftUp() {
-        int broadcastMax = 7;
+        int broadcastMax = 7; // в константу класса
         if (currentGear < broadcastMax) {
             currentGear++;
             System.out.println("Gear shifted up, current gear: " + currentGear);
@@ -14,7 +14,7 @@ public class Transmission {
     }
 
     public void shiftDown() {
-        int broadcastMin = 0;
+        int broadcastMin = 0; // в константу класса
         if (currentGear > broadcastMin) {
             currentGear--;
             System.out.println("Gear shifted down, current gear: " + currentGear);
