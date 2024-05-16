@@ -22,9 +22,6 @@ public class Transmission {
             System.out.println("Unable to downshift. Minimum gear reached.");
         }
     }
-      // переключение передачи здесь бы не должно.
-//        int speed = transmission.getCurrentGear() * ratio;
-//        System.out.println("Current speed: " + speed + "km/h");
 
     public int getCurrentGear() {
         return currentGear;
