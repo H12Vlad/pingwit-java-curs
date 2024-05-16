@@ -11,12 +11,9 @@ public class Engine {
         isRunning = running;
     }
 
-    public Engine() { // этот конструктор можно удалить, он будет создан автоматически
-    }
-
     public void start() {
         if (isRunning) {
-            System.out.println("The engine is running"); // The engine is running -> The engine is already running, мелочь, но у тебя снизу стоп так же описан
+            System.out.println("The engine is already running");
         } else {
             isRunning = true;
             System.out.println("The engine is running");

@@ -60,6 +60,7 @@ public class Butterfly {
                     System.out.print(printer);
                 }
             }
+            
             leftBorder--;
             rightBorder++;
             System.out.println();
