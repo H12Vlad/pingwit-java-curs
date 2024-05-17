@@ -3,7 +3,7 @@ package com.pingwit.part_10.homework.task_2;
 public class Car implements CarDetails {
     private Engine engine;
     private Transmission transmission;
-    private static final int ratio = 20; // ratio -> RATIO
+    private static final int RATIO = 20;
 
     public Car() {
         engine = new Engine();
@@ -16,7 +16,7 @@ public class Car implements CarDetails {
             System.out.println("I can’t go, the engine is not running.");
             return;
         }
-        int speed = transmission.getCurrentGear() * ratio;
+        int speed = transmission.getCurrentGear() * RATIO;
         System.out.println("Current speed: " + speed + "km/h");
     }
 

@@ -2,11 +2,11 @@ package com.pingwit.part_10.homework.task_2;
 
 public class Transmission {
     private int currentGear;
-    private static final int broadcastMin = 0; // BROADCAST_MIN, а лучше MIN_GEAR
-    private static final int broadcastMax = 7; // BROADCAST_MAX, а лучше MAX_GEAR
+    private static final int MIN_GEAR = 0;
+    private static final int MAX_GEAR = 7;
 
     public void shiftUp() {
-        if (currentGear < broadcastMax) {
+        if (currentGear < MAX_GEAR) {
             currentGear++;
             System.out.println("Gear shifted up, current gear: " + currentGear);
         } else {
@@ -15,7 +15,7 @@ public class Transmission {
     }
 
     public void shiftDown() {
-        if (currentGear > broadcastMin) {
+        if (currentGear > MIN_GEAR) {
             currentGear--;
             System.out.println("Gear shifted down, current gear: " + currentGear);
         } else {
