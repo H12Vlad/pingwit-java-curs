@@ -3,7 +3,7 @@ package com.pingwit.part_10.homework.task_2;
 public class Car implements CarDetails {
     private Engine engine;
     private Transmission transmission;
-    private static final int ratio = 20;
+    private static final int ratio = 20; // ratio -> RATIO
 
     public Car() {
         engine = new Engine();

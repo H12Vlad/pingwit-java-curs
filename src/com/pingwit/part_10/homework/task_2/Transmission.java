@@ -2,8 +2,8 @@ package com.pingwit.part_10.homework.task_2;
 
 public class Transmission {
     private int currentGear;
-    private static final int broadcastMin = 0;
-    private static final int broadcastMax = 7;
+    private static final int broadcastMin = 0; // BROADCAST_MIN, а лучше MIN_GEAR
+    private static final int broadcastMax = 7; // BROADCAST_MAX, а лучше MAX_GEAR
 
     public void shiftUp() {
         if (currentGear < broadcastMax) {
