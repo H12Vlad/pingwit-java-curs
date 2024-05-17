@@ -9,5 +9,4 @@ public class Monkey {
     public int countCoconuts(Branch branch) {
         return 0;
     }
-
 }
