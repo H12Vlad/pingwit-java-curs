@@ -1,7 +1,6 @@
 package com.pingwit.part_11.homework.rask_2;
 
 public class SmartMonkey extends Monkey {
-
     @Override
     public int countBananas(Branch branch) {
         int totalBananas = branch.getBananas();
