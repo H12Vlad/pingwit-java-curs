@@ -1,21 +1,22 @@
-package com.pingwit.part_11.homework.rask_2; // rask_2 -> task_2
+package com.pingwit.part_11.homework.task_2; // rask_2 -> task_2
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Branch {
+    private boolean fruit;
     private int bananas;
     private int coconuts;
-    private List<Branch> subBranches; // subBranches -> branches
+    List<Branch> branches;
 
     public Branch(int bananas, int coconuts) {
         this.bananas = bananas;
         this.coconuts = coconuts;
-        this.subBranches = new ArrayList<>();
+        this.branches = new ArrayList<>();
     }
 
     public void addSubBranch(Branch branch) {
-        subBranches.add(branch);
+        branches.add(branch);
     }
 
     public int getBananas() {
@@ -27,6 +28,14 @@ public class Branch {
     }
 
     public List<Branch> getSubBranches() {
-        return subBranches;
+        return branches;
+    }
+
+    public boolean isFruit() {
+        return fruit;
+    }
+
+    public void setFruit(boolean fruit) {
+        this.fruit = fruit;
     }
 }

@@ -1,23 +1,25 @@
 package com.pingwit.part_11.homework.task_1;
 
+import java.lang.reflect.Type;
+
 public class Vehicle {
     private String licensePlate;
-    private String type; // для типа используй enum
+    private Type type;
     private int numberOfPeople;
-    private double mass; // weight более стандартизированное название для обозначения веса
+    private double weight;
 
     public Vehicle(String licensePlate, String type, int numberOfPeople, double mass) {
         this.licensePlate = licensePlate;
-        this.type = type;
+        this.type = type.getClass();
         this.numberOfPeople = numberOfPeople;
-        this.mass = mass;
+        this.weight = weight;
     }
 
     public String getLicensePlate() {
         return licensePlate;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
@@ -26,6 +28,6 @@ public class Vehicle {
     }
 
     public double getMass() {
-        return mass;
+        return weight;
     }
 }

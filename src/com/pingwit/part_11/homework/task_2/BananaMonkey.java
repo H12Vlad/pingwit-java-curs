@@ -1,6 +1,6 @@
-package com.pingwit.part_11.homework.rask_2; // rask_2 -> task_2
+package com.pingwit.part_11.homework.task_2;
 
-public class BananaCounterMonkey extends Monkey { // BananaCounterMonkey -> BananaMonkey
+public class BananaMonkey extends Monkey {
 
     @Override
     public int countBananas(Branch branch) {
@@ -13,6 +13,6 @@ public class BananaCounterMonkey extends Monkey { // BananaCounterMonkey -> Bana
 
     @Override
     public int countCoconuts(Branch branch) {
-        return 0; // Не умеет считать кокосы
+        return 0;
     }
 }

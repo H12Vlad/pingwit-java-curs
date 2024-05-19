@@ -1,4 +1,4 @@
-package com.pingwit.part_11.homework.rask_2;
+package com.pingwit.part_11.homework.task_2;
 
 public class TestMonkeyCode {
     public static void main(String[] args) {
@@ -20,8 +20,8 @@ public class TestMonkeyCode {
         Branch coconutSubBranch1 = new Branch(0, 2);
         coconutBranch1.addSubBranch(coconutSubBranch1);
 
-        Monkey bananaCounterMonkey = new BananaCounterMonkey();
-        Monkey coconutCounterMonkey = new CoconutCounterMonkey();
+        Monkey bananaCounterMonkey = new BananaMonkey();
+        Monkey coconutCounterMonkey = new CoconutMonkey();
         Monkey smartMonkey = new SmartMonkey();
 
         MonkeyManager manager = new MonkeyManager();

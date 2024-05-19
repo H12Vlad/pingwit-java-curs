@@ -1,4 +1,4 @@
-package com.pingwit.part_11.homework.rask_2;
+package com.pingwit.part_11.homework.task_2;
 
 public class MonkeyManager {
     public void askMonkeyToCountFruits(Monkey monkey, Branch tree) {
