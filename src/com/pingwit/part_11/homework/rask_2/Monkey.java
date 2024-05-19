@@ -2,7 +2,7 @@ package com.pingwit.part_11.homework.rask_2;
 
 public class Monkey {
 
-    public int countBananas(Branch branch) {
+    public int countBananas(Branch branch) { // можно объединить countBananas() и countCoconuts(), т.к. в задании нету необходимости отдельно считать бананы и кокосы
         return 0;
     }
 

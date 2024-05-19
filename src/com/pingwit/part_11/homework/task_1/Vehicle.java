@@ -2,9 +2,9 @@ package com.pingwit.part_11.homework.task_1;
 
 public class Vehicle {
     private String licensePlate;
-    private String type;
+    private String type; // для типа используй enum
     private int numberOfPeople;
-    private double mass;
+    private double mass; // weight более стандартизированное название для обозначения веса
 
     public Vehicle(String licensePlate, String type, int numberOfPeople, double mass) {
         this.licensePlate = licensePlate;
