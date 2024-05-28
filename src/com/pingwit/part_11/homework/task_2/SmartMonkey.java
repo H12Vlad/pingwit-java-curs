@@ -1,21 +1,12 @@
 package com.pingwit.part_11.homework.task_2;
 
-public class SmartMonkey extends Monkey {
+public class SmartMonkey implements Monkey {
     @Override
-    public int countBananas(Branch branch) {
-        int totalBananas = branch.getBananas();
+    public int countFruits(Branch branch) {
+        int totalFruits = branch.getCoconuts() + branch.getBananas();
         for (Branch subBranch : branch.getSubBranches()) {
-            totalBananas += countBananas(subBranch);
+            totalFruits += countFruits(subBranch);
         }
-        return totalBananas;
-    }
-
-    @Override
-    public int countCoconuts(Branch branch) {
-        int totalCoconuts = branch.getCoconuts();
-        for (Branch subBranch : branch.getSubBranches()) {
-            totalCoconuts += countCoconuts(subBranch);
-        }
-        return totalCoconuts;
+        return totalFruits;
     }
 }

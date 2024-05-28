@@ -1,18 +1,13 @@
 package com.pingwit.part_11.homework.task_2;
 
-public class BananaMonkey extends Monkey {
+public class BananaMonkey implements Monkey {
 
     @Override
-    public int countBananas(Branch branch) {
+    public int countFruits(Branch branch) {
         int totalBananas = branch.getBananas();
         for (Branch subBranch : branch.getSubBranches()) {
-            totalBananas += countBananas(subBranch);
+            totalBananas += countFruits(subBranch);
         }
         return totalBananas;
-    }
-
-    @Override
-    public int countCoconuts(Branch branch) {
-        return 0;
     }
 }
