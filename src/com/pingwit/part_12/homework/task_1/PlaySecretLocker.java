@@ -1,7 +1,7 @@
 package com.pingwit.part_12.homework.task_1;
 
 import java.lang.reflect.Field;
-
+// красота
 public class PlaySecretLocker {
     public static void main(String[] args) throws Exception {
         SecretLocker locker = new SecretLocker("old_Passcode");

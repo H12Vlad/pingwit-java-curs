@@ -4,6 +4,7 @@ public class Person {
     private String name;
     private int age;
 
+    // в описании задания конструктор приватный, а у тебя паблик
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
