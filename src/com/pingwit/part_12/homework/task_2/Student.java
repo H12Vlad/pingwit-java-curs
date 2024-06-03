@@ -5,7 +5,7 @@ public class Student {
     private String surname;
     private int age;
 
-    private Student(String name, String surname, int age) {
+    Student(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
