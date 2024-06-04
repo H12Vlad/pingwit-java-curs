@@ -1,6 +1,5 @@
 package com.pingwit.part_12.homework.task_2;
-// лишний импорт
-import java.lang.reflect.Constructor;
+
 import java.util.Arrays;
 
 public class UniversityStudents {
