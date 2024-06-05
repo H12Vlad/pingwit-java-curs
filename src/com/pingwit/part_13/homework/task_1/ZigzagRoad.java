@@ -7,11 +7,11 @@ public class ZigzagRoad {
         String emptyString = " ";
         int counter = 100;
         Boolean increment = false;
-        int right = 0;
-        int left = 10;
+        int streetLength = 10;
+        int left = 30;
 
         while (counter > 0) {
-            for (int i = 0; i < tab + 10; i++) {
+            for (int i = 0; i < tab + left; i++) {
                 System.out.print(emptyString);
             }
 
@@ -23,11 +23,11 @@ public class ZigzagRoad {
                 tab--;
             }
 
-            if (tab == right) {
+            if (tab + left == left) {
                 increment = true;
             }
 
-            if (tab == left) {
+            if (tab == streetLength) {
                 increment = false;
             }
         }
