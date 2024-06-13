@@ -10,6 +10,7 @@ public class FilterWords {
                 "major", "gameplay", "components", "are", "already", "in", "place", "and", "functioning",
                 "players", "help", "water", "wild", "weather", "wool", "worry"};
 
+        // Если сам решал, то ок, если гуглом, то давай сам при помощи массивов
         List<String> filteredWords = Arrays.stream(words)
                 .filter(word -> word.startsWith("W") || word.startsWith("w"))
                 .collect(Collectors.toList());

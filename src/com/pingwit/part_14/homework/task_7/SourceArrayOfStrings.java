@@ -6,7 +6,7 @@ public class SourceArrayOfStrings {
         System.out.println("Строки длиной больше 5 символов:");
 
         for (String str : strings) {
-            if (str.length() > 5) {
+            if (str.length() > 5) { // 5 магическое число
                 System.out.println(str);
             }
         }

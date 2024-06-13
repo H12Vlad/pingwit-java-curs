@@ -22,6 +22,11 @@ public class WordCounter {
         }
     }
 
+    /* Давай пока без использования коллекций и решений при помощи гугл. Технически задача решена верно, но не оптимально.
+    На данный момент можно создать 4 переменные alert, add и т.д. и считать кол-во слов.
+    Либо более сложный вариант - создать новый класс WordWarehouse, в котором 2 поля: word, count.
+    Затем сделать WordWarehouse[] = {new WordWarehouse("alert", 0)} и затем считать кол-во совпадений
+     */
     public static Map<String, Integer> countWords(String text, String[] wordsToFind) {
         String[] words = text.toLowerCase().replaceAll("[.,]", "").split("\\s+");
 
