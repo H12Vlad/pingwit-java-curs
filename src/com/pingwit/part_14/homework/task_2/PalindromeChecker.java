@@ -1,9 +1,8 @@
 package com.pingwit.part_14.homework.task_2;
 
-//+
 public class PalindromeChecker {
     public static void main(String[] args) {
-        String word1 = "radar"; // word1 -> здесь соглашусь с именованием, т.к. слова для сравнения могут быть разными
+        String word1 = "radar";
         String word2 = "engineering";
 
         System.out.println("Слово '" + word1 + "' является палиндромом: " + isPalindrome(word1));

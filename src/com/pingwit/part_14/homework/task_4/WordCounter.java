@@ -1,8 +1,5 @@
 package com.pingwit.part_14.homework.task_4;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class WordCounter {
     public static void main(String[] args) {
 
@@ -14,36 +11,35 @@ public class WordCounter {
                 " come from various gaming backgrounds." +
                 " Plan is to make the game as good as possible but without compromising the core idea.";
 
-        String[] wordsToFind = {"alert", "add", "good", "plan"};
+        String[] wordsToFind = {"alert", " add ", "good ", "plan "};
 
-        Map<String, Integer> wordCounts = countWords(text, wordsToFind);
-        for (String word : wordsToFind) {
-            System.out.println("Слово '" + word + "' встречается " + wordCounts.getOrDefault(word, 0) + " раз.");
-        }
-    }
-
+        //Оставил на всякий случай:):):)
     /* Давай пока без использования коллекций и решений при помощи гугл. Технически задача решена верно, но не оптимально.
     На данный момент можно создать 4 переменные alert, add и т.д. и считать кол-во слов.
     Либо более сложный вариант - создать новый класс WordWarehouse, в котором 2 поля: word, count.
     Затем сделать WordWarehouse[] = {new WordWarehouse("alert", 0)} и затем считать кол-во совпадений
      */
-    public static Map<String, Integer> countWords(String text, String[] wordsToFind) {
+        WordWarehouse[] wordCounts = countWords(text, wordsToFind);
+        for (WordWarehouse ww : wordCounts) {
+            System.out.println("Word '" + ww.word + "' meets " + ww.count + " once.");
+        }
+    }
+
+    public static WordWarehouse[] countWords(String text, String[] wordsToFind) {
+        WordWarehouse[] warehouses = new WordWarehouse[wordsToFind.length];
+        for (int i = 0; i < wordsToFind.length; i++) {
+            warehouses[i] = new WordWarehouse(wordsToFind[i].toLowerCase());
+        }
+
         String[] words = text.toLowerCase().replaceAll("[.,]", "").split("\\s+");
 
-        Map<String, Integer> wordCountMap = new HashMap<>();
-
         for (String word : words) {
-            if (wordCountMap.containsKey(word)) {
-                wordCountMap.put(word, wordCountMap.get(word) + 1);
-            } else {
-                wordCountMap.put(word, 1);
+            for (WordWarehouse ww : warehouses) {
+                if (ww.word.equals(word)) {
+                    ww.count++;
+                }
             }
         }
-
-        Map<String, Integer> result = new HashMap<>();
-        for (String wordToFind : wordsToFind) {
-            result.put(wordToFind, wordCountMap.getOrDefault(wordToFind.toLowerCase(), 0));
-        }
-        return result;
+        return warehouses;
     }
 }

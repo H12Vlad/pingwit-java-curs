@@ -5,8 +5,10 @@ public class SourceArrayOfStrings {
         String[] strings = {"Ford", "Fiat", "Volvo", "Tesla", "Toyota", "Lamborghini", "Volkswagen"};
         System.out.println("Строки длиной больше 5 символов:");
 
+        int characters = 5;
+
         for (String str : strings) {
-            if (str.length() > 5) { // 5 магическое число
+            if (str.length() > characters) {
                 System.out.println(str);
             }
         }
