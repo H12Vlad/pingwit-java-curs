@@ -31,7 +31,7 @@ public class WordCounter {
             warehouses[i] = new WordWarehouse(wordsToFind[i].toLowerCase());
         }
 
-        String[] words = text.toLowerCase().replaceAll("[.,]", "").split("\\s+");
+        String[] words = text.toLowerCase().replaceAll("[.,]", "").split("\\s+"); // можно еще немного улучшить, ты можешь искать indexOf для пробела и затем использовать contains у отрезка, вместо equals, но можно оставить как есть
 
         for (String word : words) {
             for (WordWarehouse ww : warehouses) {

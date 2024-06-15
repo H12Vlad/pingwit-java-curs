@@ -11,7 +11,7 @@ public class NumberOfWordsTakeTwo {
                 make the game as good as possible but without compromising the core idea.
                 """;
 
-        int alertCount = 0;
+        int alertCount = 0; // идея 0 показывает серым - это значит что лишнее присвоение, создаем переменную в месте вызова метода
         int addCount = 0;
         int goodCount = 0;
         int planCount = 0;

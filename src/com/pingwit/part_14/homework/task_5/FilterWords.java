@@ -8,6 +8,7 @@ public class FilterWords {
 
         int count = 0;
         for (String word : words) {
+            // а давай выражение внутри if вынесем в отдельный приватный метод, который будет возвращать boolean и вызовем его еще в 21 строке
             if (word.startsWith("W") || word.startsWith("w")) {
                 count++;
             }

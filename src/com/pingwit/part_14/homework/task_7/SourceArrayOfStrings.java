@@ -5,7 +5,7 @@ public class SourceArrayOfStrings {
         String[] strings = {"Ford", "Fiat", "Volvo", "Tesla", "Toyota", "Lamborghini", "Volkswagen"};
         System.out.println("Строки длиной больше 5 символов:");
 
-        int characters = 5;
+        int characters = 5; // characters - это символы, у тебя переменная хранит maxAllowedLength, лучше переименовать
 
         for (String str : strings) {
             if (str.length() > characters) {
