@@ -19,8 +19,9 @@ public class GladiatorBattle {
         System.out.println("Are you ready? Press Enter to begin the battle.");
         scanner.nextLine();
 
-        int playerHP = 4; // 4 вынеси в переменную defaultHP
-        int opponentHP = 4;
+        int defaultHP = 4;
+        int playerHP = defaultHP;
+        int opponentHP = defaultHP;
 
         while (playerHP > 0 && opponentHP > 0) {
             try {
@@ -53,8 +54,8 @@ public class GladiatorBattle {
             } catch (InvalidCommandException e) {
                 System.out.println(e.getMessage());
             }
-// лишняя строка, удали
-        } // а сюда можно добавить абзац
+        }
+
         if (playerHP == 0) {
             System.out.println("You lost. The enemy won!");
         } else {
@@ -70,8 +71,8 @@ public class GladiatorBattle {
                 throw new InvalidCommandException("Wrong command. Try again.");
             }
         } else {
-            scanner.next(); // Consume invalid input - добавь в сообщение об ошибке результат scanner.next()
-            throw new InvalidCommandException("Wrong command. Try again.");
+            scanner.next();
+            throw new InvalidCommandException("Consume invalid input");
         }
         return input;
     }

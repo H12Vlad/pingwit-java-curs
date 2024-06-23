@@ -11,15 +11,10 @@ public class NumberOfWordsTakeTwo {
                 make the game as good as possible but without compromising the core idea.
                 """;
 
-        int alertCount = 0; // идея 0 показывает серым - это значит что лишнее присвоение, создаем переменную в месте вызова метода
-        int addCount = 0;
-        int goodCount = 0;
-        int planCount = 0;
-
-        alertCount = countWordOccurrences(text, "alert");
-        addCount = countWordOccurrences(text, "add");
-        goodCount = countWordOccurrences(text, "good");
-        planCount = countWordOccurrences(text, "plan");
+        int alertCount = countWordOccurrences(text, "alert");
+        int addCount = countWordOccurrences(text, "add");
+        int goodCount = countWordOccurrences(text, "good");
+        int planCount = countWordOccurrences(text, "plan");
 
         System.out.println("The word 'alert' meets " + alertCount + " times");
         System.out.println("The word 'add' meets " + addCount + " times");
