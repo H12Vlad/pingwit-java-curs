@@ -5,16 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class CopyingFile {
+public class CopyingFileBober {
     public static void main(String[] args) {
-        String sourcePath = "src/com/pingwit/part_18/homework/task_5/bober.png";
+        String sourcePath = "src/com/pingwit/part_18/homework/task_5/Bober.png";
         String destinationPath = "src/com/pingwit/part_18/homework/task_5/";
-        String copyName = "bober_copy.png";
+        String copyName = "Bober_copy.png";
 
         File destinationFile = new File(destinationPath + copyName);
         int copyIndex = 1;
         while (destinationFile.exists()) {
-            copyName = "bober_copy(" + copyIndex + ").png";
+            copyName = "Bober_copy(" + copyIndex + ").png";
             destinationFile = new File(destinationPath + copyName);
             copyIndex++;
         }
