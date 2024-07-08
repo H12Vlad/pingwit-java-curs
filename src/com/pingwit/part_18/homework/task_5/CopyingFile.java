@@ -8,7 +8,7 @@ import java.io.IOException;
 public class CopyingFile {
     public static void main(String[] args) {
         String sourcePath = "src/com/pingwit/part_18/homework/task_5/bober.png";
-        String destinationPath = "src/com/pingwit/part_18/homework/task_5_";
+        String destinationPath = "src/com/pingwit/part_18/homework/task_5/";
         String copyName = "bober_copy.png";
 
         File destinationFile = new File(destinationPath + copyName);
