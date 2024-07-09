@@ -21,6 +21,5 @@ public class WritingTextToFile {
         } catch (IOException e) {
             throw new RuntimeException();
         }
-// лишняя строка, удали
     }
 }

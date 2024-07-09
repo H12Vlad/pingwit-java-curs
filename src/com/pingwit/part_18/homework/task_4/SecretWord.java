@@ -1,35 +1,28 @@
 package com.pingwit.part_18.homework.task_4;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class SecretWord {
     public static void main(String[] args) {
+        String secretMessage = "Code: phantom";
         File file = new File("src/com/pingwit/part_18/homework/task_4/Jenot.webp");
-        byte[] fileContent = new byte[(int) file.length()];
 
-        try (FileWriter fw = new FileWriter("src/com/pingwit/part_18/homework/task_4/Jenot.webp", true)) {
-            fw.write("\n");
-            fw.write("Code: phantom"); // вынеси секретную фразу в переменную
+        try (RandomAccessFile raf = new RandomAccessFile(file, "rw")) {
+            long fileLengthBeforeWrite = raf.length();
+            raf.seek(fileLengthBeforeWrite);
+            raf.write(("\n" + secretMessage).getBytes(StandardCharsets.UTF_8));
 
-            fw.flush();
+            long secretMessageLength = raf.length() - fileLengthBeforeWrite;
+
+            raf.seek(fileLengthBeforeWrite);
+            byte[] secretMessageBytes = new byte[(int) secretMessageLength];
+            raf.readFully(secretMessageBytes);
+
+            String readSecretMessage = new String(secretMessageBytes, StandardCharsets.UTF_8);
+            System.out.println("Секретное сообщение: " + readSecretMessage);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        try (FileInputStream fis = new FileInputStream(file)) {
-            fis.read(fileContent); // вместо fis.read используй fis.skip() и передай длину файла ДО записи слова
-            /*
-            затем
-            int secretMessageLength = текущий_размер_файла - размер файла до секретной фразы
-            byte[] secretMessageBytes = fis.readNBytes(secretMessageLength)
-            String secretMessage = new String(secretMessageBytes, StandardCharsets.UTF_8);
-            System.out.println("Секретное сообщение: " + secretMessage);
-             */
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-        String fas = new String(fileContent);
-        String secretMessage = fas.substring(fas.lastIndexOf("Code: phantom"));
-        System.out.println("Секретное сообщение: " + secretMessage);
     }
 }
