@@ -1,0 +1,128 @@
+  lecture_notes_part_
+### Часть 12. Рефлексия
+
+## Работа с рефлексией
+
+Рефлексия в Java предоставляет возможность программно изучать и модифицировать структуру, поведение и состояние классов во время выполнения. С её помощью можно получать доступ к приватным конструкторам, полям, вызывать методы и т.д.
+
+### Доступ к приватным конструкторам
+
+Пример использования рефлексии для доступа к приватному конструктору класса и создания экземпляра:
+```
+import java.lang.reflect.Constructor;
+
+public class ReflectionExample {
+    public static void main(String[] args) throws Exception {
+        Class<?> clazz = ExampleClass.class;
+
+        // Получаем приватный конструктор класса
+        Constructor<?> constructor = clazz.getDeclaredConstructor();
+
+        // Разрешаем доступ к приватному конструктору
+        constructor.setAccessible(true);
+
+        // Создаем экземпляр класса, используя приватный конструктор
+        ExampleClass instance = (ExampleClass) constructor.newInstance();
+
+        // Теперь можно использовать экземпляр
+        instance.method();
+    }
+}
+
+class ExampleClass {
+    private ExampleClass() {
+        System.out.println("Private constructor invoked");
+    }
+
+    public void method() {
+        System.out.println("Method called");
+    }
+}
+```
+
+### Доступ к полям
+
+Пример получения доступа к приватному полю с использованием рефлексии:
+```
+import java.lang.reflect.Field;
+
+public class ReflectionExample {
+    public static void main(String[] args) throws Exception {
+        ExampleClass obj = new ExampleClass();
+        Class<?> clazz = obj.getClass();
+
+        // Получаем доступ к приватному полю 'privateField'
+        Field privateField = clazz.getDeclaredField("privateField");
+
+        // Разрешаем доступ к приватному полю
+        privateField.setAccessible(true);
+
+        // Устанавливаем значение поля
+        privateField.set(obj, "New value");
+
+        // Получаем значение поля
+        String value = (String) privateField.get(obj);
+        System.out.println("Значение приватного поля: " + value);
+    }
+}
+
+class ExampleClass {
+    private String privateField = "Initial value";
+}
+```
+
+### Доступ к статическим полям
+
+Пример получения доступа к статическому полю с использованием рефлексии:
+```
+import java.lang.reflect.Field;
+
+public class ReflectionExample {
+    public static void main(String[] args) throws Exception {
+        Class<?> clazz = ExampleClass.class;
+
+        // Получаем доступ к статическому полю 'staticField'
+        Field staticField = clazz.getDeclaredField("staticField");
+
+        // Разрешаем доступ к статическому полю
+        staticField.setAccessible(true);
+
+        // Устанавливаем новое значение статического поля
+        staticField.set(null, "New static value");
+
+        // Получаем значение статического поля
+        String value = (String) staticField.get(null);
+        System.out.println("Значение статического поля: " + value);
+    }
+}
+
+class ExampleClass {
+    private static String staticField = "Initial static value";
+}
+```
+
+### Использование `instanceof`
+
+Оператор `instanceof` используется для проверки,
+ является ли объект экземпляром определенного класса или его подкласса.
+Пример использования `instanceof`:
+```
+public class InstanceOfExample {
+    public static void main(String[] args) {
+        Object obj = "Строка";
+
+        if (obj instanceof String) {
+            System.out.println("Объект является экземпляром класса String");
+        } else {
+            System.out.println("Объект не является экземпляром класса String");
+        }
+    }
+}
+```
+
+### Заключение
+
+Рефлексия в Java предоставляет мощные инструменты для работы с классами во время выполнения.
+Однако использование рефлексии может снижать производительность и приводить к сложностям при поддержке кода.
+Поэтому следует использовать рефлексию осторожно и в тех случаях,
+когда другие методы решения задачи недоступны или неприменимы.
