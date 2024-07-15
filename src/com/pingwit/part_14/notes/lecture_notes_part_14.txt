@@ -1,0 +1,108 @@
+### Работа со строками
+
+В Java строки представляют собой важный тип данных, широко используемый в различных приложениях.
+ Для работы со строками Java предоставляет несколько классов: `String`, `StringBuilder` и `StringBuffer`.
+  Каждый из них имеет свои особенности и области применения.
+
+## String
+
+`String` — это неизменяемый (immutable) объект, представляющий последовательность символов.
+Изменение строки на самом деле создает новый объект `String`.
+
+### Методы строки
+
+`String` предоставляет множество методов для работы со строками:
+
+- **charAt(int index)**: Возвращает символ в указанной позиции.
+- **substring(int beginIndex, int endIndex)**: Возвращает подстроку от beginIndex до endIndex.
+- **contains(CharSequence s)**: Проверяет, содержит ли строка заданную последовательность символов.
+- **equals(Object anObject)**: Сравнивает строку с другим объектом на равенство.
+- **length()**: Возвращает длину строки.
+- **toLowerCase() и toUpperCase()**: Преобразуют строку к нижнему или верхнему регистру соответственно.
+- **replace(CharSequence target, CharSequence replacement)**: Заменяет все вхождения target на replacement.
+- **split(String regex)**: Разбивает строку на части по заданному регулярному выражению.
+
+Пример:
+```
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello, World!";
+        System.out.println("Длина строки: " + str.length());
+        System.out.println("Символ на позиции 1: " + str.charAt(1));
+        System.out.println("Подстрока (0, 5): " + str.substring(0, 5));
+        System.out.println("Строка содержит 'World': " + str.contains("World"));
+        System.out.println("Строка в верхнем регистре: " + str.toUpperCase());
+    }
+}
+```
+
+### Многострочные строки
+
+В Java 13 были введены текстовые блоки (Text Blocks), которые упрощают создание многострочных строк.
+Текстовые блоки используют тройные кавычки (`"""`).
+
+Пример:
+```
+public class TextBlockExample {
+    public static void main(String[] args) {
+        String textBlock = """
+                Это многострочная строка.
+                Она поддерживает переносы строк
+                и другие специальные символы.
+                """;
+        System.out.println(textBlock);
+    }
+}
+```
+
+## StringBuilder и StringBuffer
+
+`StringBuilder` и `StringBuffer` используются для создания изменяемых строк. Разница между ними заключается в том,
+ что `StringBuffer` является потокобезопасным (synchronized), что делает его более медленным, а `StringBuilder` — нет.
+
+### Методы StringBuilder и StringBuffer
+
+- **append()**: Добавляет строковое представление аргумента к текущей строке.
+- **insert()**: Вставляет строковое представление аргумента в указанную позицию.
+- **delete()**: Удаляет символы в указанном диапазоне.
+- **reverse()**: Разворачивает текущую строку.
+- **toString()**: Преобразует `StringBuilder` или `StringBuffer` в объект `String`.
+
+Пример:
+```
+public class StringBuilderExample {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(", World!");
+        System.out.println(sb.toString());
+
+        sb.insert(5, " Java");
+        System.out.println(sb.toString());
+
+        sb.delete(5, 10);
+        System.out.println(sb.toString());
+
+        sb.reverse();
+        System.out.println(sb.toString());
+    }
+}
+```
+
+### Производительность
+
+- **String**: Изменение строк создаёт новые объекты, что может быть неэффективно при частых изменениях строк.
+- **StringBuilder**: Быстрее при частых изменениях строк, так как не является потокобезопасным.
+- **StringBuffer**: Потокобезопасный, но медленнее, чем `StringBuilder`.
+
+### Выбор между String, StringBuilder и StringBuffer
+
+- Используйте **`String`** для неизменяемых строк.
+- Используйте **`StringBuilder`** для изменяемых строк в однопоточных приложениях.
+- Используйте **`StringBuffer`** для изменяемых строк в многопоточных приложениях.
+
+### Заключение
+
+Работа со строками в Java включает в себя использование классов `String`,
+ `StringBuilder` и `StringBuffer`, каждый из которых имеет свои особенности и области применения.
+  Понимание этих различий позволяет писать более эффективный и производительный код,
+  учитывая требования конкретного приложения.

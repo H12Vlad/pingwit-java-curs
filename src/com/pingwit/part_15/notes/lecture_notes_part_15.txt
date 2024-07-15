@@ -1,0 +1,142 @@
+### Исключения
+
+## Иерархия исключений
+
+Иерархия исключений в Java представлена классами, которые наследуются от класса `Throwable`.
+Основные подклассы `Throwable` — это `Error` и `Exception`.
+
+- **`Throwable`**: Базовый класс для всех ошибок и исключений.
+  - **`Error`**: Используется для ошибок, которые не предполагается обрабатывать в коде (например, `OutOfMemoryError`).
+  - **`Exception`**: Используется для исключений, которые можно и следует обрабатывать в коде.
+    - **`RuntimeException`**: Исключения времени выполнения (unchecked exceptions), к
+    оторые могут возникнуть в любой момент (например, `NullPointerException`).
+    - **Все остальные подклассы `Exception`**: Исключения времени компиляции (checked exceptions),
+    которые должны быть обработаны или объявлены в методе (например, `IOException`).
+
+## `try-catch-finally`
+
+Конструкция `try-catch-finally` используется для обработки исключений.
+Блок `try` содержит код, который может вызвать исключение, блок `catch` перехватывает и обрабатывает исключение,
+ а блок `finally` выполняется в любом случае, независимо от того, было исключение или нет.
+
+### Пример использования `try-catch-finally`
+
+```
+public class ExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int result = divide(10, 0);
+            System.out.println("Результат: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Исключение: Деление на ноль!");
+        } finally {
+            System.out.println("Этот блок выполнится в любом случае.");
+        }
+    }
+
+    public static int divide(int a, int b) {
+        return a / b;
+    }
+}
+```
+
+## `throw` и `throws`
+
+### `throw`
+
+Ключевое слово `throw` используется для явного выброса исключения.
+
+Пример:
+
+```
+public class ThrowExample {
+    public static void main(String[] args) {
+        try {
+            validateAge(15);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Исключение: " + e.getMessage());
+        }
+    }
+
+    public static void validateAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("Возраст должен быть 18 или больше.");
+        }
+    }
+}
+```
+
+### `throws`
+
+Ключевое слово `throws` используется в сигнатуре метода для указания, что метод может выбросить исключения.
+
+Пример:
+
+```
+import java.io.IOException;
+
+public class ThrowsExample {
+    public static void main(String[] args) {
+        try {
+            readFile("nonexistentfile.txt");
+        } catch (IOException e) {
+            System.out.println("Исключение: " + e.getMessage());
+        }
+    }
+
+    public static void readFile(String filename) throws IOException {
+        // Код для чтения файла, который может выбросить IOException
+        throw new IOException("Файл не найден.");
+    }
+}
+```
+
+## Исключения в интерфейсах и наследниках
+
+Когда метод в интерфейсе объявляет исключение с использованием `throws`, любой класс, реализующий этот интерфейс,
+должен либо обработать это исключение, либо также объявить его.
+
+Пример:
+
+```
+import java.io.IOException;
+
+interface FileReader {
+    void read(String filename) throws IOException;
+}
+
+class MyFileReader implements FileReader {
+    @Override
+    public void read(String filename) throws IOException {
+        // Реализация метода
+        throw new IOException("Ошибка чтения файла.");
+    }
+}
+```
+
+## `System.exit` в `finally`
+
+Блок `finally` выполняется всегда, за исключением случаев, когда в нем вызван `System.exit()`.
+Это завершает выполнение программы до выполнения всех оставшихся инструкций.
+
+Пример:
+
+```
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            System.out.println("В блоке try.");
+            System.exit(0);
+        } finally {
+            System.out.println("Этот блок не выполнится.");
+        }
+    }
+}
+```
+
+### Заключение
+
+Исключения в Java предоставляют мощный механизм обработки ошибок и особых ситуаций.
+ Понимание иерархии исключений, а также правильное использование `try-catch-finally`,
+  `throw` и `throws` позволяют писать надежный и безопасный код. Следует помнить, что блок `finally` выполняется всегда,
+   если программа не завершена вызовом `System.exit()`.

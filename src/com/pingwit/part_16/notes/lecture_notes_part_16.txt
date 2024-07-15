@@ -1,0 +1,98 @@
+### Аннотации
+
+## Теория аннотаций
+
+Аннотации в Java представляют собой форму метаданных,
+которые могут быть добавлены к коду для предоставления дополнительной информации компилятору,
+ инструментам разработки и рантайм-системе. Аннотации не изменяют действия программы,
+ но могут использоваться для предоставления дополнительной информации.
+
+### Основные аннотации в Java
+
+В Java есть несколько встроенных аннотаций:
+
+- **`@Override`**: Указывает, что метод переопределяет метод суперкласса.
+- **`@Deprecated`**: Указывает, что элемент (класс, метод, поле) устарел и не рекомендуется к использованию.
+- **`@SuppressWarnings`**: Инструктирует компилятор игнорировать определенные предупреждения.
+- **`@FunctionalInterface`**: Обозначает интерфейс как функциональный, содержащий единственный абстрактный метод.
+
+### Создание и использование пользовательских аннотаций
+
+Вы можете создать собственные аннотации для предоставления специфической информации и использовать их в своем коде.
+
+### Создание пользовательской аннотации
+
+Аннотации определяются с помощью ключевого слова `@interface`. Пример создания пользовательской аннотации:
+
+```
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+// Определение аннотации
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface MyCustomAnnotation {
+    String value();
+    int number() default 0;
+}
+```
+
+- **`@Retention`**: Определяет, как долго аннотация сохраняется. Возможные значения:
+  - `RetentionPolicy.SOURCE`: Аннотация доступна только в исходном коде и отбрасывается компилятором.
+  - `RetentionPolicy.CLASS`: Аннотация сохраняется в байт-коде, но недоступна во время выполнения.
+  - `RetentionPolicy.RUNTIME`: Аннотация сохраняется в байт-коде и доступна во время выполнения.
+- **`@Target`**: Определяет, к чему может быть применена аннотация. Возможные значения:
+  - `ElementType.TYPE`: Класс, интерфейс (включая аннотации), перечисление.
+  - `ElementType.FIELD`: Поле, перечислительный констант.
+  - `ElementType.METHOD`: Метод.
+  - `ElementType.PARAMETER`: Параметр метода.
+  - `ElementType.CONSTRUCTOR`: Конструктор.
+  - `ElementType.LOCAL_VARIABLE`: Локальная переменная.
+  - `ElementType.ANNOTATION_TYPE`: Аннотация.
+  - `ElementType.PACKAGE`: Пакет.
+
+### Использование пользовательской аннотации
+
+Пример использования аннотации:
+
+```
+public class CustomAnnotationExample {
+
+    @MyCustomAnnotation(value = "Example method", number = 42)
+    public void annotatedMethod() {
+        System.out.println("This method is annotated.");
+    }
+
+    public static void main(String[] args) throws Exception {
+        CustomAnnotationExample example = new CustomAnnotationExample();
+        example.annotatedMethod();
+
+        // Рефлексия для получения информации о аннотации
+        Class<?> clazz = example.getClass();
+        for (var method : clazz.getDeclaredMethods()) {
+            if (method.isAnnotationPresent(MyCustomAnnotation.class)) {
+                MyCustomAnnotation annotation = method.getAnnotation(MyCustomAnnotation.class);
+                System.out.println("Метод: " + method.getName());
+                System.out.println("Значение: " + annotation.value());
+                System.out.println("Число: " + annotation.number());
+            }
+        }
+    }
+}
+```
+
+В этом примере:
+
+1. Создается пользовательская аннотация `@MyCustomAnnotation` с двумя параметрами: `value` и `number`.
+2. Метод `annotatedMethod` помечается этой аннотацией.
+3. В `main` методе используется рефлексия для получения информации о наличии и значениях аннотации на методе `annotatedMethod`.
+
+### Заключение
+
+Аннотации в Java — это мощный инструмент для добавления метаданных в код.
+ Они помогают улучшить читаемость и поддержку кода, а также могут быть использованы для различных задач,
+ таких как генерация кода, валидация, конфигурация и многое другое.
+ Создание и использование пользовательских аннотаций предоставляет гибкие возможности для добавления специфичной информации,
+ которая может быть использована на разных этапах разработки и выполнения программы.

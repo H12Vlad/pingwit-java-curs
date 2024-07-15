@@ -1,1 +1,59 @@
-lecture_notes_part_
+Сериализация, Zip потоки, случайный доступ к файлам (IO)
+
+#### 1. Сериализация и работа с файлами
+
+Сериализация в Java позволяет сохранять состояние объекта в виде потока байтов, которые могут быть затем сохранены в файле или переданы по сети.
+Основные классы, используемые для сериализации и десериализации объектов, это `ObjectOutputStream` и `ObjectInputStream`.
+
+- **ObjectOutputStream**: Этот класс позволяет записывать Java объекты в поток вывода, который может быть затем сохранен в файл или передан по сети. Пример использования:
+  ```
+  try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("object.dat"))) {
+      MyClass obj = new MyClass();
+      oos.writeObject(obj); // Сериализация объекта
+  } catch (IOException e) {
+      e.printStackTrace();
+  }
+  ```
+
+- **ObjectInputStream**: Этот класс используется для чтения объектов из потока ввода, который был ранее сериализован. Пример:
+  ```java
+  try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("object.dat"))) {
+      MyClass obj = (MyClass) ois.readObject(); // Десериализация объекта
+      // Дальнейшая работа с объектом obj
+  } catch (IOException | ClassNotFoundException e) {
+      e.printStackTrace();
+  }
+  ```
+
+- **RandomAccessFile**: Этот класс в Java позволяет читать и записывать данные в файле в произвольных местах,
+не обязательно последовательно. Он поддерживает как чтение, так и запись данных в файле с использованием указателя файла (file pointer). Пример:
+  ```
+  try (RandomAccessFile raf = new RandomAccessFile("data.txt", "rw")) {
+      raf.writeUTF("Hello, World!"); // Запись в файл
+      raf.seek(0); // Перемещение указателя в начало файла
+      String message = raf.readUTF(); // Чтение из файла
+      System.out.println(message); // Вывод содержимого файла
+  } catch (IOException e) {
+      e.printStackTrace();
+  }
+  ```
+
+- **ZIP потоки**: В Java также доступны классы для работы с архивами ZIP. Например,
+`ZipInputStream` и `ZipOutputStream` позволяют читать и записывать данные в формате ZIP-архива. Пример создания ZIP-архива:
+  ```java
+  try (FileOutputStream fos = new FileOutputStream("archive.zip");
+       ZipOutputStream zos = new ZipOutputStream(fos)) {
+
+      ZipEntry entry = new ZipEntry("data.txt");
+      zos.putNextEntry(entry);
+      byte[] data = "Hello, World!".getBytes();
+      zos.write(data, 0, data.length);
+      zos.closeEntry();
+
+  } catch (IOException e) {
+      e.printStackTrace();
+  }
+  ```
+
+Эти классы позволяют эффективно работать с файлами в Java,
+обеспечивая сериализацию объектов, случайный доступ к файлам и возможность работы с ZIP-архивами.
