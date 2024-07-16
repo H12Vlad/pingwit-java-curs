@@ -1,10 +1,10 @@
 package com.pingwit.part_19.homework.task_3;
 
 import java.io.File;
-
+// очень хорошо
 public class DirectoryStructurePrinter {
     public static void main(String[] args) {
-        File directory = new File("src/com/pingwit");
+        File directory = new File("/Users/alexfomin/IdeaProjects/pingwit/pingwit-java-students/pingwit-java-curs/src/com/pingwit");
         if (!directory.exists() || !directory.isDirectory()) {
             System.out.println("The specified path is not a directory or does not exist.");
             return;

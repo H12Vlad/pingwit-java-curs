@@ -1,7 +1,7 @@
 package com.pingwit.part_19.homework.task_1;
 
 import java.io.*;
-
+// очень хорошо
 public class Main {
     public static void main(String[] args) {
         Engine engine = new Engine(1000, "ABC123");
