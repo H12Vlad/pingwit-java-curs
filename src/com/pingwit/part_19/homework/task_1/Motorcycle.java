@@ -3,8 +3,9 @@ package com.pingwit.part_19.homework.task_1;
 import java.io.Serializable;
 
 public class Motorcycle implements Serializable {
+    private static final long serialVersionUID = 7061636L;
     private String brand;
-    private String model;
+    public String model;
     private Engine engine;
 
     public Motorcycle(String brand, String model, Engine engine) {
