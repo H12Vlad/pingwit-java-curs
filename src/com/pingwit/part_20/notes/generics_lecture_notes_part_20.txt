@@ -1,0 +1,150 @@
+lecture_notes_part_
+
+
+Generics  позволяют создавать классы, интерфейсы и методы, которые могут работать с любыми типами данных, предоставляя возможность обеспечения типовой безопасности и повторного использования кода. Generics устраняют необходимость приведения типов и позволяют избежать ошибок на этапе компиляции.
+
+#### Теория
+
+Generics позволяют параметризовать классы, интерфейсы и методы типами, что делает код более гибким и типобезопасным. Параметры типов указываются в угловых скобках `<T>`, где `T` - произвольное имя параметра типа.
+
+#### Использование в полях класса
+
+Обобщённые типы могут быть использованы в полях класса для хранения данных различных типов, которые будут определены позже при создании экземпляра класса.
+
+**Пример:**
+
+```
+public class Box<T> {
+    private T content;
+
+    public Box(T content) {
+        this.content = content;
+    }
+
+    public T getContent() {
+        return content;
+    }
+
+    public void setContent(T content) {
+        this.content = content;
+    }
+}
+```
+
+В этом примере класс `Box` параметризован типом `T`. Поле `content` может хранить данные любого типа, заданного при создании объекта `Box`.
+
+#### Конструкторы
+
+В обобщённых классах конструкторы могут использовать параметры типов для инициализации полей.
+
+**Пример:**
+
+```
+public class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+}
+```
+
+Здесь класс `Pair` использует два параметра типа `K` и `V`, позволяя хранить пары значений различных типов.
+
+#### Методы
+
+Обобщённые методы могут принимать параметры типов, которые задаются при вызове метода.
+
+**Пример:**
+
+```
+public class Util {
+    public static <T> T getMiddle(T[] array) {
+        return array[array.length / 2];
+    }
+}
+```
+
+Метод `getMiddle` параметризован типом `T`, позволяя ему работать с массивами любых типов.
+
+#### Наследование
+
+Обобщённые классы могут быть базовыми для других обобщённых или обычных классов. При наследовании могут быть переданы конкретные типы или сохранена параметризация.
+
+**Пример:**
+
+```
+public class GenericBase<T> {
+    private T data;
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+}
+
+public class GenericDerived<T> extends GenericBase<T> {
+    public void printData() {
+        System.out.println(getData());
+    }
+}
+```
+
+Класс `GenericDerived` наследует параметризованный класс `GenericBase` и использует его методы.
+
+#### Примеры использования
+
+**Пример использования класса `Box`:**
+
+```
+public class GenericExample {
+    public static void main(String[] args) {
+        Box<Integer> intBox = new Box<>(123);
+        System.out.println("Integer Box: " + intBox.getContent());
+
+        Box<String> strBox = new Box<>("Hello World");
+        System.out.println("String Box: " + strBox.getContent());
+    }
+}
+```
+
+**Пример использования класса `Pair`:**
+
+```
+public class PairExample {
+    public static void main(String[] args) {
+        Pair<String, Integer> pair = new Pair<>("One", 1);
+        System.out.println("Key: " + pair.getKey() + ", Value: " + pair.getValue());
+
+        Pair<Double, Double> coordinates = new Pair<>(12.34, 56.78);
+        System.out.println("Coordinates: (" + coordinates.getKey() + ", " + coordinates.getValue() + ")");
+    }
+}
+```
+
+**Пример использования метода `getMiddle`:**
+
+```
+public class UtilExample {
+    public static void main(String[] args) {
+        String[] words = {"one", "two", "three", "four"};
+        String middle = Util.getMiddle(words);
+        System.out.println("Middle element: " + middle);
+    }
+}
+```
+
+Generics в Java позволяют писать более гибкий и безопасный код, избегая ошибок на этапе компиляции и улучшая читаемость и повторное использование кода.
