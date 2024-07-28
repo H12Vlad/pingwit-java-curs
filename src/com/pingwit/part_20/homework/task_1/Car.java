@@ -1,8 +1,8 @@
 package com.pingwit.part_20.homework.task_1;
 
 public abstract class Car {
-     String model;
-     String color;
+     String model; // если модификатора доступа отсутствует - это default (т.е. package-private), а необходим protected
+     String color; // если модификатора доступа отсутствует - это default (т.е. package-private), а необходим protected
 
     public String getModel() {
         return model;
