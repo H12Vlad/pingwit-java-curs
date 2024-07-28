@@ -6,15 +6,15 @@ import java.util.List;
 public class Garage<T extends Car> {
     private List<T> cars = new ArrayList<>();
 
-
-    public void parked(T car) {
+// лишняя строка, удали
+    public void parked(T car) { // parked -> park
         cars.add(car);
     }
 
     public List<T> getCars() {
         return cars;
     }
-    public long countBlackCars() {
+    public long countBlackCars() { // А давай в этот метод добавим аргумент color и тогда можно будет его использовать для подсчета автомобилей любого цвета
         return cars.stream()
                 .filter(car -> "(Black)".equalsIgnoreCase(car.getColor())).
                 count();

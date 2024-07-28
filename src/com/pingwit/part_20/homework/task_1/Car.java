@@ -1,8 +1,8 @@
 package com.pingwit.part_20.homework.task_1;
 
 public abstract class Car {
-    private String model;
-    public String color;
+    private String model; // обычно поля у абстрактных классов делают protected, чтобы классы-наследники могли получить к ним доступ
+    public String color; // обычно поля у абстрактных классов делают protected, чтобы классы-наследники могли получить к ним доступ
 
     public String getModel() {
         return model;
@@ -29,6 +29,7 @@ public abstract class Car {
                 '}';
     }
 }
+// удаляй код, который не используешь
 
 //class BMW extends Car {
 //    public BMW(String model, String color) {
