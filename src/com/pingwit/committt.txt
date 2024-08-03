@@ -1,3 +1,4 @@
 adding a file with lecture notes
 Homework part_
 check homework again part_
+_lecture_notes_part_.txt
