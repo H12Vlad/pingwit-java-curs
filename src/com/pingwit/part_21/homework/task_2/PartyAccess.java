@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class PartyAccess {
     public static void main(String[] args) {
-        ArrayList<String> guestList = new ArrayList<>();
+        ArrayList<String> guestList = new ArrayList<>(); //ArrayList<Integer> list -> List<Integer> guests/whiteList -> лучше использовать интерфейс + название соответствует содержимому
         guestList.add("Mandela Mari");
         guestList.add("Pincho Georgii");
         guestList.add("Libi Adam");
@@ -17,7 +17,7 @@ public class PartyAccess {
         System.out.println("Скажите ваше имя: ");
         String name = scanner.nextLine();
 
-            if (guestList.contains(name)) {
+            if (guestList.contains(name)) { // отформатируй код
                 System.out.println("Вы можете пройти.");
             } else {
                 System.out.println("Извините, ваше имя не в списке.");

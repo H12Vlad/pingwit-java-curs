@@ -2,7 +2,7 @@ package com.pingwit.part_21.homework.task_6;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-public class BenchmarkSpeedRemovalFromBeginningArrayListAndLinkedList {
+public class BenchmarkSpeedRemovalFromBeginningArrayListAndLinkedList { // отформатируй код
     public static void main(String[] args) {
         int numElements = 100000;
 

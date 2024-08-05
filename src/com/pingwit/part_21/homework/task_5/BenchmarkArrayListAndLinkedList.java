@@ -3,7 +3,7 @@ package com.pingwit.part_21.homework.task_5;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
+//+
 public class BenchmarkArrayListAndLinkedList {
     public static void main(String[] args) {
         int numElements = 100000;
@@ -18,7 +18,7 @@ public class BenchmarkArrayListAndLinkedList {
             linkedList.add(i);
         }
 
-        long startTime = System.nanoTime();
+        long startTime = System.nanoTime(); // как альтернатива System.currentTimeMillis()
         while (!arrayList.isEmpty()) {
             arrayList.remove(arrayList.size() / 2);
         }

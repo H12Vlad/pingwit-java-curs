@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class IntegerArrayListElements {
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();// ArrayList<Integer> list -> List<Integer> numbers -> лучше использовать интерфейс + название соответствует содержимому
 
         for (int i = 0; i < 100; i++) {
             list.add(0, i);
