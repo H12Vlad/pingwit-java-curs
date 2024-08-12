@@ -1,0 +1,194 @@
+### Работа с Map и Set
+
+В Java коллекции `Map` и `Set` представляют собой структуры данных,
+которые широко используются для хранения и обработки уникальных данных и пар "ключ-значение".
+ В этой секции рассмотрим работу с `HashMap`, `TreeMap`, `HashSet`, и `TreeSet`,
+ а также приведем пример использования этих коллекций в контексте банковского приложения.
+
+#### 1. `HashMap` и `TreeMap`
+
+**`HashMap`** и **`TreeMap`** реализуют интерфейс `Map`, который представляет собой структуру данных, состоящую из пар "ключ-значение".
+
+- **`HashMap`**:
+  - Хранит элементы на основе хеш-кода ключей.
+  - Обеспечивает быструю вставку, удаление и поиск элементов.
+  - Не гарантирует порядка элементов.
+
+- **`TreeMap`**:
+  - Хранит элементы в отсортированном порядке по ключам.
+  - Использует структуру красно-черного дерева для хранения элементов.
+  - Более медленный по сравнению с `HashMap` для операций вставки и удаления.
+
+#### Пример использования `HashMap` и `TreeMap` в банковском приложении
+
+```
+import java.util.HashMap;
+import java.util.TreeMap;
+import java.util.Map;
+
+class BankAccount {
+    private String accountNumber;
+    private String owner;
+    private double balance;
+
+    public BankAccount(String accountNumber, String owner, double balance) {
+        this.accountNumber = accountNumber;
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient funds!");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Account: " + accountNumber + ", Owner: " + owner + ", Balance: " + balance;
+    }
+}
+
+public class BankApplication {
+    public static void main(String[] args) {
+        // Использование HashMap для хранения счетов
+        Map<String, BankAccount> accountsMap = new HashMap<>();
+        accountsMap.put("12345", new BankAccount("12345", "Alice", 5000.0));
+        accountsMap.put("67890", new BankAccount("67890", "Bob", 10000.0));
+
+        // Доступ к счету через HashMap
+        BankAccount aliceAccount = accountsMap.get("12345");
+        if (aliceAccount != null) {
+            aliceAccount.deposit(1500.0);
+            System.out.println(aliceAccount);
+        }
+
+        // Использование TreeMap для хранения счетов
+        Map<String, BankAccount> sortedAccountsMap = new TreeMap<>();
+        sortedAccountsMap.put("12345", new BankAccount("12345", "Alice", 5000.0));
+        sortedAccountsMap.put("67890", new BankAccount("67890", "Bob", 10000.0));
+
+        // Вывод отсортированных счетов через TreeMap
+        for (Map.Entry<String, BankAccount> entry : sortedAccountsMap.entrySet()) {
+            System.out.println(entry.getValue());
+        }
+    }
+}
+```
+
+#### 2. `HashSet` и `TreeSet`
+
+**`HashSet`** и **`TreeSet`** реализуют интерфейс `Set`, который представляет собой коллекцию уникальных элементов.
+
+- **`HashSet`**:
+  - Хранит элементы на основе хеш-кода.
+  - Быстро выполняет операции вставки, удаления и поиска.
+  - Не гарантирует порядка элементов.
+
+- **`TreeSet`**:
+  - Хранит элементы в отсортированном порядке.
+  - Использует структуру красно-черного дерева для хранения элементов.
+  - Более медленный по сравнению с `HashSet` для операций вставки и удаления.
+
+#### Пример использования `HashSet` и `TreeSet` в банковском приложении
+
+```
+import java.util.HashSet;
+import java.util.TreeSet;
+import java.util.Set;
+
+class Customer {
+    private String name;
+    private String id;
+
+    public Customer(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer: " + name + ", ID: " + id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Customer customer = (Customer) obj;
+        return id.equals(customer.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+}
+
+public class BankApplication {
+    public static void main(String[] args) {
+        // Использование HashSet для хранения клиентов
+        Set<Customer> customerSet = new HashSet<>();
+        customerSet.add(new Customer("Alice", "C123"));
+        customerSet.add(new Customer("Bob", "C456"));
+        customerSet.add(new Customer("Alice", "C123")); // Дубликат не будет добавлен
+
+        // Вывод клиентов через HashSet
+        for (Customer customer : customerSet) {
+            System.out.println(customer);
+        }
+
+        // Использование TreeSet для хранения клиентов
+        Set<Customer> sortedCustomerSet = new TreeSet<>((c1, c2) -> c1.getName().compareTo(c2.getName()));
+        sortedCustomerSet.add(new Customer("Alice", "C123"));
+        sortedCustomerSet.add(new Customer("Bob", "C456"));
+        sortedCustomerSet.add(new Customer("Charlie", "C789"));
+
+        // Вывод отсортированных клиентов через TreeSet
+        for (Customer customer : sortedCustomerSet) {
+            System.out.println(customer);
+        }
+    }
+}
+```
+
+### Объяснение кода:
+
+1. **`HashMap` и `TreeMap`**:
+   - Используются для хранения банковских счетов с ключом в виде номера счета.
+   - `HashMap` обеспечивает быстрый доступ к счетам, а `TreeMap` хранит счета в отсортированном порядке по номеру счета.
+
+2. **`HashSet` и `TreeSet`**:
+   - Используются для хранения уникальных клиентов банка.
+   - `HashSet` обеспечивает уникальность клиентов по идентификатору, а `TreeSet` хранит клиентов в отсортированном порядке по имени.
+
+### Заключение
+
+`Map` и `Set` предоставляют мощные и гибкие структуры данных для работы с парами "ключ-значение" и уникальными элементами соответственно.
+ В банковском приложении они могут быть использованы для эффективного хранения и обработки информации о счетах и клиентах.
