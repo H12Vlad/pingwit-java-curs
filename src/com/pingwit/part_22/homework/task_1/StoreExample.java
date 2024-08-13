@@ -3,6 +3,7 @@ package com.pingwit.part_22.homework.task_1;
 import java.util.HashSet;
 import java.util.Set;
 
+// а ты понял почему все Store добавились в HashSet?
 public class StoreExample {
     public static void main(String[] args) {
         Set<Store> storeSet = new HashSet<>();

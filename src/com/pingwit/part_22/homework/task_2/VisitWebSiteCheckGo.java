@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
 
+// очень хорошо
 public class VisitWebSiteCheckGo {
     public static void main(String[] args) {
         // Создаем коллекцию посещений
@@ -21,7 +22,7 @@ public class VisitWebSiteCheckGo {
         int monthInput = scanner.nextInt();
         Month selectedMonth = Month.of(monthInput);
 
-        Map<String, Set<String>> siteVisits = new HashMap<>();
+        Map<String, Set<String>> siteVisits = new HashMap<>(); // можно так оставить, а можно твою мапу заменить на Map<String, Integer>, чтобы сразу посетителей считать
 
         for (VisitWebSite visit : visits) {
             if (visit.getVisitDate().getMonth() == selectedMonth) {

@@ -3,7 +3,7 @@ package com.pingwit.part_22.homework.task_2;
 import java.time.LocalDate;
 
 
-public class VisitWebSite {
+public class VisitWebSite { // VisitWebSite -> WebSiteStatistic
     private String username;
     private String website;
     private LocalDate visitDate;
