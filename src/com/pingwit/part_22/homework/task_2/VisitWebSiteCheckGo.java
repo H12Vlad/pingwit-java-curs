@@ -7,24 +7,23 @@ import java.util.*;
 // очень хорошо
 public class VisitWebSiteCheckGo {
     public static void main(String[] args) {
-        // Создаем коллекцию посещений
-        List<VisitWebSite> visits = new ArrayList<>();
-        visits.add(new VisitWebSite("Alice", "example.com", LocalDate.of(2024, 12, 10)));
-        visits.add(new VisitWebSite("Bob", "example.com", LocalDate.of(2024, 8, 15)));
-        visits.add(new VisitWebSite("Charlie", "example.com", LocalDate.of(2024, 5, 25)));
-        visits.add(new VisitWebSite("Alice", "another-site.com", LocalDate.of(2019, 8, 12)));
-        visits.add(new VisitWebSite("Bob", "another-site.com", LocalDate.of(2023, 10, 5)));
-        visits.add(new VisitWebSite("Charlie", "another-site.com", LocalDate.of(2023, 1, 18)));
-        visits.add(new VisitWebSite("Dave", "example.com", LocalDate.of(2003, 5, 20)));
+        List<WebSiteStatistic> visits = new ArrayList<>();
+        visits.add(new WebSiteStatistic("Alice", "example.com", LocalDate.of(2024, 12, 10)));
+        visits.add(new WebSiteStatistic("Bob", "example.com", LocalDate.of(2024, 8, 15)));
+        visits.add(new WebSiteStatistic("Charlie", "example.com", LocalDate.of(2024, 5, 25)));
+        visits.add(new WebSiteStatistic("Alice", "another-site.com", LocalDate.of(2019, 8, 12)));
+        visits.add(new WebSiteStatistic("Bob", "another-site.com", LocalDate.of(2023, 10, 5)));
+        visits.add(new WebSiteStatistic("Charlie", "another-site.com", LocalDate.of(2023, 1, 18)));
+        visits.add(new WebSiteStatistic("Dave", "example.com", LocalDate.of(2003, 5, 20)));
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter month (1-12): ");
         int monthInput = scanner.nextInt();
         Month selectedMonth = Month.of(monthInput);
 
-        Map<String, Set<String>> siteVisits = new HashMap<>(); // можно так оставить, а можно твою мапу заменить на Map<String, Integer>, чтобы сразу посетителей считать
+        Map<String, Set<String>> siteVisits = new HashMap<>();
 
-        for (VisitWebSite visit : visits) {
+        for (WebSiteStatistic visit : visits) {
             if (visit.getVisitDate().getMonth() == selectedMonth) {
                 String site = visit.getWebsite();
                 String user = visit.getUsername();
