@@ -1,21 +1,23 @@
-package com.pingwit.part_12.homework.task_2;
+package com.pingwit.part_23.homework.task_2;
 
-public class Student {
+public class StudentSorted implements Comparable<StudentSorted> {
     private String name;
-    private String surname;
     private int age;
 
-    Student(String name, String surname, int age) {
+    public StudentSorted(String name, int age) {
         this.name = name;
-        this.surname = surname;
         this.age = age;
+    }
+
+    @Override
+    public int compareTo(StudentSorted other) {
+        return this.name.compareTo(other.name);
     }
 
     @Override
     public String toString() {
         return "StudentSorted{" +
                 "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
                 ", age=" + age +
                 '}';
     }

@@ -1,6 +1,6 @@
 package com.pingwit.part_7.homework.task_2;
 
-public class NameAndAge { // -> Person, Student, Dog... Не используй названия вроде NameAndAge
+public class NameAndAge { // -> Person, StudentSorted, Dog... Не используй названия вроде NameAndAge
 
     String name;
     int age;
