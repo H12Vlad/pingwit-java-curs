@@ -50,5 +50,16 @@ public class FruitDataList {
             System.out.println("Total weight for " + type + ": " + totalWeightByType.get(type) + " kg");
             System.out.println();
         }
+
+        /* ты сейчас заменил стримы на обычные циклы, это первый шаг, но у тебя сейчас 4 цикла
+        1. for (Fruit fruit : fruits) {
+        2. for (List<Fruit> fruitList : groupedFruits.values()) {
+        3. for (String type : groupedFruits.keySet()) {
+        4. for (Fruit fruit : groupedFruits.get(type)) {
+
+        Тебе необходимо переписать код, чтобы осталось 2 цикла
+        1. Ты выполняешь все необходимые вычисления (группировка по типу+подсчет веса)
+        2. Выводишь на экран
+         */
     }
 }
