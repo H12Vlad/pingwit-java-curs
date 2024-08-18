@@ -19,7 +19,7 @@ public class FruitDataList {
                 new Fruit("Apple", 6.0, "Pome"),
                 new Fruit("Pear", 4.0, "Pome"));
         // Группировка фруктов по типу
-        Map<String, List<Fruit>> groupedFruits = fruits.stream()
+        Map<String, List<Fruit>> groupedFruits = fruits.stream() // в 23 лекции вы еще не проходили стримы, если гуглил решение, то лучше переделай сам без стримов
                 .collect(Collectors.groupingBy(Fruit::getType));
         // Подсчет суммарного веса фруктов для каждого типа
         Map<String, Double> totalWeightByType = fruits.stream()
@@ -28,7 +28,7 @@ public class FruitDataList {
         // Вывод данных
         for (String type : groupedFruits.keySet()) {
             // Сортировка фруктов по названию внутри группы
-            List<Fruit> sortedFruits = groupedFruits.get(type).stream()
+            List<Fruit> sortedFruits = groupedFruits.get(type).stream() // ой чувствую гуглил
                     .sorted(Comparator.comparing(Fruit::getName))
                     .collect(Collectors.toList());
             // Вывод фруктов
@@ -39,5 +39,8 @@ public class FruitDataList {
             System.out.println("Total weight for " + type + ": " + totalWeightByType.get(type) + " kg");
             System.out.println();
         }
+
+        // а теперь попробуй объединить группировку с подсчетом веса и сортировкой в один цикл
+        // а вторым циклом распечатай полученный результат
     }
 }

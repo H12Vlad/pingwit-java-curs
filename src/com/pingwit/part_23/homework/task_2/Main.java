@@ -2,9 +2,9 @@ package com.pingwit.part_23.homework.task_2;
 
 import java.util.TreeSet;
 
-public class Main {
+public class Main { // Main -> StudentMain, чтобы в проекте не было 100500 классов с названием Main
     public static void main(String[] args) {
-        TreeSet<StudentSorted> students = new TreeSet<>();
+        TreeSet<StudentSorted> students = new TreeSet<>(); //слева лучше всегда использовать интерфейс, поэтому -> TreeSet<StudentSorted> students -> Set<StudentSorted>
 
         students.add(new StudentSorted("Jon", 23));
         students.add(new StudentSorted("Anna", 21));
