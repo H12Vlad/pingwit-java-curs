@@ -1,10 +1,6 @@
 package com.pingwit.part_23.homework.task_3;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class FruitDataList {
     public static void main(String[] args) {
@@ -18,29 +14,41 @@ public class FruitDataList {
                 new Fruit("Banana", 12.0, "Tropical"),
                 new Fruit("Apple", 6.0, "Pome"),
                 new Fruit("Pear", 4.0, "Pome"));
-        // Группировка фруктов по типу
-        Map<String, List<Fruit>> groupedFruits = fruits.stream() // в 23 лекции вы еще не проходили стримы, если гуглил решение, то лучше переделай сам без стримов
-                .collect(Collectors.groupingBy(Fruit::getType));
-        // Подсчет суммарного веса фруктов для каждого типа
-        Map<String, Double> totalWeightByType = fruits.stream()
-                .collect(Collectors.groupingBy(Fruit::getType,
-                        Collectors.summingDouble(Fruit::getWeight)));
+        //Map для хранения сгруппированных фруктов и их общего веса
+        Map<String, List<Fruit>> groupedFruits = new HashMap<>();
+        Map<String, Double> totalWeightByType = new HashMap<>();
+        // Группировка фруктов по типу, подсчет веса и сортировка по названию
+        for (Fruit fruit : fruits) {
+            String type = fruit.getType();
+            // Группировка фрукта по типу
+            if (!groupedFruits.containsKey(type)) {
+                groupedFruits.put(type, new ArrayList<>());
+                totalWeightByType.put(type, 0.0);
+            }
+            // Добавления фрукта в соответствующий список
+            groupedFruits.get(type).add(fruit);
+            // Суммируем вес
+            totalWeightByType.put(type, totalWeightByType.get(type) + fruit.getWeight());
+        }
+        // Сортировка фруктов в каждой группе по названию
+        for (List<Fruit> fruitList : groupedFruits.values()) {
+            fruitList.sort(new Comparator<Fruit>() {
+                @Override
+                public int compare(Fruit f1, Fruit f2) {
+                    return f1.getName().compareTo(f2.getName());
+                }
+            });
+        }
         // Вывод данных
         for (String type : groupedFruits.keySet()) {
-            // Сортировка фруктов по названию внутри группы
-            List<Fruit> sortedFruits = groupedFruits.get(type).stream() // ой чувствую гуглил
-                    .sorted(Comparator.comparing(Fruit::getName))
-                    .collect(Collectors.toList());
+            System.out.println("Type: " + type);
             // Вывод фруктов
-            for (Fruit fruit : sortedFruits) {
-                System.out.println("-" + fruit);
+            for (Fruit fruit : groupedFruits.get(type)) {
+                System.out.println(" - " + fruit);
             }
             // Вывод общего веса для типа
             System.out.println("Total weight for " + type + ": " + totalWeightByType.get(type) + " kg");
             System.out.println();
         }
-
-        // а теперь попробуй объединить группировку с подсчетом веса и сортировкой в один цикл
-        // а вторым циклом распечатай полученный результат
     }
 }

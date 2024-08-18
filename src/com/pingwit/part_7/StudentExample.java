@@ -9,11 +9,11 @@ public class StudentExample {
         System.out.println(egor.name);
         System.out.println(egor.surname);
 //
-//        StudentSorted random = new StudentSorted();
+//        Student random = new Student();
 //        System.out.println(random.name);
 //        System.out.println(random.surname);
 //
-//        StudentSorted olya = new StudentSorted("Olya", 25);
+//        Student olya = new Student("Olya", 25);
 //        System.out.println(olya.name);
 //        System.out.println(olya.surname);
 //        System.out.println(olya.age);
