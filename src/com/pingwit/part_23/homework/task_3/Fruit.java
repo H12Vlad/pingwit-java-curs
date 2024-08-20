@@ -1,34 +1,16 @@
 package com.pingwit.part_23.homework.task_3;
 
-public class Fruit {
-    private String name;
-    private double weight;
-    private String type;
-
-    public Fruit(String name, double weight, String type) {
-        this.name = name;
-        this.weight = weight;
-        this.type = type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public String getType() {
-        return type;
-    }
-
+public record Fruit(String name, double weight, String type) implements Comparable<Fruit> {
     @Override
-    public String toString() {
-        return "Fruit{" +
-                "name='" + name + '\'' +
-                ", weight=" + weight +
-                ", type='" + type + '\'' +
-                '}';
+    public int compareTo(Fruit fruit) {
+        int nameResult = this.name.compareTo(fruit.name());
+        if (nameResult != 0) {
+            return nameResult;
+        }
+        int typeResult = this.type.compareTo(fruit.type());
+        if (typeResult != 0) {
+            return typeResult;
+        }
+        return Double.compare(this.weight, fruit.weight);
     }
 }
