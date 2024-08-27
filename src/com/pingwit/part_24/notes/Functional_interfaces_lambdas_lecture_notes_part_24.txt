@@ -1,0 +1,153 @@
+### 1. **Функциональные интерфейсы и лямбда-выражения**
+
+#### Функциональные интерфейсы
+
+**Функциональный интерфейс** — это интерфейс,
+ который содержит только один абстрактный метод.
+  В Java такие интерфейсы могут быть реализованы с
+  использованием лямбда-выражений. Несмотря на то,
+   что функциональный интерфейс содержит только один абстрактный метод,
+    он может содержать и другие методы с реализацией
+     по умолчанию или статические методы.
+
+Примеры функциональных интерфейсов из стандартной библиотеки Java:
+
+- **`Runnable`**: не принимает аргументов и не возвращает значения.
+ Используется в многопоточности.
+
+  ```java
+  @FunctionalInterface
+  public interface Runnable {
+      void run();
+  }
+  ```
+
+- **`Comparator<T>`**: используется для сравнения объектов.
+
+  ```java
+  @FunctionalInterface
+  public interface Comparator<T> {
+      int compare(T o1, T o2);
+      // Есть также методы по умолчанию и статические методы
+  }
+  ```
+
+- **`Function<T, R>`**:
+принимает один аргумент типа `T` и возвращает результат типа `R`.
+
+  ```java
+  @FunctionalInterface
+  public interface Function<T, R> {
+      R apply(T t);
+  }
+  ```
+
+- **`Predicate<T>`**: принимает один аргумент типа `T` и возвращает `boolean`.
+
+  ```java
+  @FunctionalInterface
+  public interface Predicate<T> {
+      boolean test(T t);
+  }
+  ```
+
+- **`Consumer<T>`**: принимает один аргумент типа `T`,
+ но не возвращает значение.
+
+  ```java
+  @FunctionalInterface
+  public interface Consumer<T> {
+      void accept(T t);
+  }
+  ```
+
+#### Лямбда-выражения
+
+**Лямбда-выражение** — это краткий способ объявления анонимной функции.
+ Лямбда-выражения позволяют писать компактный и читаемый код,
+  и часто используются для реализации методов функциональных интерфейсов.
+
+**Синтаксис лямбда-выражения:**
+
+```java
+(аргументы) -> { тело }
+```
+
+Примеры использования:
+
+1. **Лямбда для `Runnable`:**
+
+   ```java
+   Runnable r = () -> System.out.println("Hello, World!");
+   ```
+
+2. **Лямбда для `Comparator<T>`:**
+
+   ```java
+   Comparator<String> stringLengthComparator = (s1, s2) -> s1.length() - s2.length();
+   ```
+
+3. **Лямбда для `Function<T, R>`:**
+
+   ```java
+   Function<String, Integer> stringLengthFunction = s -> s.length();
+   ```
+
+4. **Лямбда для `Predicate<T>`:**
+
+   ```java
+   Predicate<Integer> isEven = n -> n % 2 == 0;
+   ```
+
+5. **Лямбда для `Consumer<T>`:**
+
+   ```java
+   Consumer<String> printConsumer = s -> System.out.println(s);
+   ```
+
+#### Метод ссылки
+
+Метод ссылки (method reference) — это короткий способ записи лямбда-выражений,
+которые просто вызывают существующий метод.
+
+**Виды ссылок на методы:**
+
+1. **Ссылка на метод объекта:**
+   ```java
+   Consumer<String> print = System.out::println;
+   ```
+   Эквивалентно:
+   ```java
+   Consumer<String> print = s -> System.out.println(s);
+   ```
+
+2. **Ссылка на статический метод:**
+   ```java
+   Function<Integer, String> intToString = String::valueOf;
+   ```
+   Эквивалентно:
+   ```java
+   Function<Integer, String> intToString = i -> String.valueOf(i);
+   ```
+
+3. **Ссылка на метод экземпляра объекта конкретного типа:**
+   ```java
+   BiFunction<String, Integer, String> substring = String::substring;
+   ```
+   Эквивалентно:
+   ```java
+   BiFunction<String, Integer, String> substring = (str, i) -> str.substring(i);
+   ```
+
+4. **Ссылка на конструктор:**
+   ```java
+   Supplier<List<String>> listSupplier = ArrayList::new;
+   ```
+   Эквивалентно:
+   ```java
+   Supplier<List<String>> listSupplier = () -> new ArrayList<>();
+   ```
+
+Лямбда-выражения и ссылки на методы позволяют значительно упростить код,
+особенно в контексте использования функциональных интерфейсов и таких библиотек,
+ как Stream API в Java.

@@ -2,3 +2,7 @@ adding a file with lecture notes
 Homework part_
 check homework again part_
 _lecture_notes_part_.txt
+
+Ctrl + Alt + V - когда нужно положить чтото в переменную,
+также работает если в конце дописать .var и  нажать Tab или Enter
+

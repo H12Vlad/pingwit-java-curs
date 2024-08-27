@@ -43,7 +43,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentSorted{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", group='" + group + '\'' +

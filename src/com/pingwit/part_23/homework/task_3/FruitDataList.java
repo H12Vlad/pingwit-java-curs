@@ -1,6 +1,6 @@
 package com.pingwit.part_23.homework.task_3;
 
-import java.math.BigDecimal; // лишний импорт
+import java.math.BigDecimal;
 import java.util.*;
 
 public class FruitDataList {
@@ -34,14 +34,12 @@ public class FruitDataList {
 
         fruitsByType.forEach((type, fruitList) -> {
             fruitList.sort(Comparator.comparing(Fruit::name));
-            double totalWeight = fruitList.stream().mapToDouble(Fruit::weight).sum(); // сам написал или гугл? Если сам, то красавчик, если гугл, то перепиши без стримов.
+            double totalWeight = fruitList.stream().mapToDouble(Fruit::weight).sum();
             System.out.println("Type: " + type);
             System.out.println("Total weight: " + totalWeight + " kg");
             System.out.println("Fruit:");
             fruitList.forEach(fruit -> System.out.println("  - " + fruit.name() + " (" + fruit.weight() + " kg)"));
             System.out.println("===");
         });
-
-        // не совсем то что я просил, но очень неплохо
     }
 }
