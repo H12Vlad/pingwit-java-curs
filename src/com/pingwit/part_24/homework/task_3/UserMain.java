@@ -15,6 +15,10 @@ public class UserMain {
 
         System.out.println("Before deletion: " + users);
 
+        /* removeIf - это фактически цикл, внутри которого происходит удаление элемента,
+         х3 вызов метода removeIf 3 раза будет бежать по всей коллекции.
+         Обнови код так, чтобы removeIf вызывался только 1 раз
+         */
         users.removeIf(user -> user.getName().startsWith("A"));
         users.removeIf(user -> user.getName().startsWith("E"));
         users.removeIf(user -> user.getName().startsWith("P"));
