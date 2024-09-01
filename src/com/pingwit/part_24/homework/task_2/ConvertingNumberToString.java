@@ -17,3 +17,4 @@ public class ConvertingNumberToString {
         System.out.println(convert.apply(5));
     }
 }
+// отформатируй код
