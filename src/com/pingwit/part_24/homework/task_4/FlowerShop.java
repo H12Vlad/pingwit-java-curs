@@ -6,37 +6,60 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FlowerShop {
-    private static final List<String> flowers = Arrays.asList("Ромашки", "Розы", "Тюльпаны"); // flowers -> FLOWERS
+    private static final List<String> FLOWERS = Arrays.asList("Ромашки", "Розы", "Тюльпаны");
 
-    public void displayFlowers() { // этот метод можем сделать приватным
-        System.out.println("Добрый день, у нас самые свежие цветы, выберите номер позиции и нажмите Enter:");
-        for (int i = 0; i < flowers.size(); i++) {
-            System.out.println((i + 1) + ". " + flowers.get(i));
+    private void displayFlowers() {
+        for (int i = 0; i < FLOWERS.size(); i++) {
+            System.out.println((i + 1) + ". " + FLOWERS.get(i));
         }
     }
 
-    public boolean isEligibleForDiscount(Calendar currentDate) { // странный метод, который всегда применяет скидку, думаю стоит добавить сюда логику
-        return true;
+    public boolean isEligibleForDiscount(Calendar currentDate) {
+        int month = currentDate.get(Calendar.MONTH);
+        int day = currentDate.get(Calendar.DAY_OF_MONTH);
+
+        if (month == Calendar.MARCH && day == 8) {
+            return true;
+        }
+
+        Calendar birthday = Calendar.getInstance();
+        birthday.set(Calendar.MONTH, Calendar.MAY);
+        birthday.set(Calendar.DAY_OF_MONTH, 12);
+
+        if (month == birthday.get(Calendar.MONTH) && day == birthday.get(Calendar.DAY_OF_MONTH)) {
+            return true;
+        }
+        return false;
     }
 
     public void processOrder(Scanner scanner) {
         String selectedFlower = null;
+        boolean isFirstAttempt = true;
+
         while (selectedFlower == null) {
             try {
+                if (isFirstAttempt) {
+                    System.out.println("Добрый день, у нас самые свежие цветы, выберите номер позиции и нажмите Enter:");
+                    isFirstAttempt = false;
+                } else {
+                    System.out.println("Пожалуйста, выберите номер позиции еще раз и нажмите Enter:");
+                }
                 displayFlowers();
 
                 System.out.println("Ваш выбор: ");
                 int choice = Integer.parseInt(scanner.nextLine());
 
-                if (choice < 1 || choice > flowers.size()) {
-                    System.out.println("Ошибка: Вы выбрали несуществующую позицию. Пожалуйста, выберите еще раз."); // верни сюда throw new, это было правильно
+                if (choice < 1 || choice > FLOWERS.size()) {
+                    throw new IndexOutOfBoundsException("Ошибка: Вы выбрали несуществующую позицию. Пожалуйста, выберите еще раз.");
                 } else {
-                    selectedFlower = flowers.get(choice - 1);
+                    selectedFlower = FLOWERS.get(choice - 1);
                     System.out.println("Вы выбрали: " + selectedFlower);
                 }
 
-            } catch (NumberFormatException e) { // NumberFormatException -> сюда лучше поставить Exception
-                System.out.println("Ошибка: некорректный ввод. Пожалуйста, введите номер позиции.");// верни сюда throw new, это было правильно
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: некорректный ввод. Пожалуйста, введите номер позиции.");
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println(e.getMessage());
             }
         }
 
@@ -53,7 +76,7 @@ public class FlowerShop {
             address = scanner.nextLine();
 
             if (address.trim().isEmpty()) {
-                System.out.println("Ошибка: Адрес не может быть пустым. Пожалуйста, введите адрес."); // верни сюда throw new, это было правильно
+                throw new IllegalArgumentException("Ошибка: Адрес не может быть пустым. Пожалуйста, введите адрес.");
             }
         }
         System.out.println("Благодарим за ваш заказ, курьер свяжется с вами в ближайшее время.");
