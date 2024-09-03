@@ -63,7 +63,7 @@ public class FlowerShop {
             }
         }
 
-        Calendar currentDate = Calendar.getInstance();
+        Calendar currentDate = Calendar.getInstance(); // лучше использовать LocalDate.now() , календарь это довольно старый инструмент. Работу с датами мы проходили на 17ом занятии
         if (isEligibleForDiscount(currentDate)) {
             System.out.println("В честь праздника 8 Марта мы дарим вам скидку 10% на весь заказ.");
         } else {
@@ -71,6 +71,11 @@ public class FlowerShop {
         }
 
         String address = null;
+        /*
+        часть "|| address.trim().isEmpty()" в начале цикла у тебя адрес всегда равен null,
+        а в 78 строке, если адрес пустой, то выбрасывается исключение, получается в этой проверке нету смысла + цикл всегда отрабатывает только 1 раз.
+        Можно убрать цикл, либо не выбрасывать исключение и переспросить адрес
+         */
         while (address == null || address.trim().isEmpty()) {
             System.out.println("Введите пожалуйста адрес доставки: ");
             address = scanner.nextLine();
