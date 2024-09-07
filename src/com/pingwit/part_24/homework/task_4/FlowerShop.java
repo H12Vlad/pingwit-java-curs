@@ -19,7 +19,7 @@ public class FlowerShop {
             return true;
         }
 
-        LocalDate birthday = LocalDate.of(currentDate.getYear(), 5, 12);
+        LocalDate birthday = LocalDate.of(currentDate.getYear(), 5, 12); // такие данные следует передавать аргументом метода. Например, ты можешь спросить у пользователя когда у него ДР в методе processOrder()
         return currentDate.equals(birthday);
     }
 
