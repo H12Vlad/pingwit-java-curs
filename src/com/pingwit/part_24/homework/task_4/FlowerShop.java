@@ -49,7 +49,7 @@ public class FlowerShop {
 
         LocalDate birthday = null;
         while (birthday == null) {
-            System.out.print("Введите вашу дату рождения (в формате ГГГГ-ММ-ДД): ");
+            System.out.print("Введите вашу дату рождения (в формате ГГГГ-ММ-ДД): "); // можешь оставить как есть, но мне нравилось, когда этот когда был в приватном методе. Это более правильный подход
             try {
                 birthday = LocalDate.parse(scanner.nextLine());
             } catch (Exception e) {
@@ -58,7 +58,7 @@ public class FlowerShop {
         }
 
         LocalDate currentDate = LocalDate.now();
-        if (currentDate.getMonthValue() == 3 && currentDate.getDayOfMonth() == 8) {
+        if (currentDate.getMonthValue() == 3 && currentDate.getDayOfMonth() == 8) { // можешь оставить как есть, но мне нравилось, когда этот когда был в приватном методе. Это более правильный подход
             System.out.println("В честь праздника 8 Марта мы дарим вам скидку 10% на весь заказ.");
         } else if (currentDate.getMonthValue() == birthday.getMonthValue() && currentDate.getDayOfMonth() == birthday.getDayOfMonth()) {
             System.out.println("В честь вашего дня рождения мы дарим вам скидку 10% на весь заказ.");
