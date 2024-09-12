@@ -1,7 +1,6 @@
 package com.pingwit.part_24.homework.task_4;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +15,18 @@ public class FlowerShop {
     }
 
     public void processOrder(Scanner scanner) {
+        String selectedFlower = selectFlower(scanner);
+
+        LocalDate birthday = promptForBirthday(scanner);
+
+        checkForDiscount(birthday);
+
+        String address = promptForAddress(scanner);
+
+        System.out.println("Благодарим за ваш заказ, курьер свяжется с вами в ближайшее время.");
+    }
+
+    private String selectFlower(Scanner scanner) {
         String selectedFlower = null;
         boolean isFirstAttempt = true;
 
@@ -39,33 +50,42 @@ public class FlowerShop {
                     selectedFlower = FLOWERS.get(choice - 1);
                     System.out.println("Вы выбрали: " + selectedFlower);
                 }
-
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: некорректный ввод. Пожалуйста, введите номер позиции.");
             } catch (IndexOutOfBoundsException e) {
                 System.out.println(e.getMessage());
             }
         }
+        return selectedFlower;
+    }
 
+    private LocalDate promptForBirthday(Scanner scanner) {
         LocalDate birthday = null;
+
         while (birthday == null) {
-            System.out.print("Введите вашу дату рождения (в формате ГГГГ-ММ-ДД): "); // можешь оставить как есть, но мне нравилось, когда этот когда был в приватном методе. Это более правильный подход
+            System.out.print("Введите вашу дату рождения (в формате ГГГГ-ММ-ДД): ");
             try {
                 birthday = LocalDate.parse(scanner.nextLine());
             } catch (Exception e) {
                 System.out.println("Ошибка: некорректная дата. Попробуйте снова.");
             }
         }
+        return birthday;
+    }
 
+    private void checkForDiscount(LocalDate birthday) {
         LocalDate currentDate = LocalDate.now();
-        if (currentDate.getMonthValue() == 3 && currentDate.getDayOfMonth() == 8) { // можешь оставить как есть, но мне нравилось, когда этот когда был в приватном методе. Это более правильный подход
+
+        if (currentDate.getMonthValue() == 3 && currentDate.getDayOfMonth() == 8) {
             System.out.println("В честь праздника 8 Марта мы дарим вам скидку 10% на весь заказ.");
         } else if (currentDate.getMonthValue() == birthday.getMonthValue() && currentDate.getDayOfMonth() == birthday.getDayOfMonth()) {
             System.out.println("В честь вашего дня рождения мы дарим вам скидку 10% на весь заказ.");
         } else {
             System.out.println("Сегодня нет специальных скидок.");
         }
+    }
 
+    private String promptForAddress(Scanner scanner) {
         String address = null;
 
         while (address == null || address.trim().isEmpty()) {
@@ -76,6 +96,6 @@ public class FlowerShop {
                 System.out.println("Ошибка: Адрес не может быть пустым. Пожалуйста, введите адрес.");
             }
         }
-        System.out.println("Благодарим за ваш заказ, курьер свяжется с вами в ближайшее время.");
+        return address;
     }
 }
