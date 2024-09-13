@@ -14,6 +14,10 @@ public class FlowerShop {
         }
     }
 
+    /* у тебя был приватный метод isEligibleForDiscount, мой прошлый комментарий был про него.
+     в методе processOrder у тебя есть неиспользуемые переменные selectedFlower, address - это косяк, но я предлагаю на данный момент оставить эту задачу и двигаться дальше.
+     Можем к ней вернуться через какое-то время и поймешь как лучше зарефакторить код
+     */
     public void processOrder(Scanner scanner) {
         String selectedFlower = selectFlower(scanner);
 
