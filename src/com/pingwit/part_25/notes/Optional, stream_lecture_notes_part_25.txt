@@ -1,0 +1,123 @@
+### Работа с `Optional` и `Stream` в Java
+
+В этой части мы рассмотрим основные методы `Optional` и `Stream`, такие как `filter()`, `map()`, `flatMap()`, `findFirst()`, `findAny()`, а также некоторые методы из класса `Collectors`.
+
+#### 1. `Optional`
+Класс `Optional` используется для работы с объектами, которые могут быть `null`, и позволяет избежать `NullPointerException`. Он предлагает методы для проверки и обработки значений в более безопасной и функциональной манере.
+
+#### Основные методы `Optional`:
+- **`filter()`** — фильтрует значение, если оно соответствует предикату.
+- **`map()`** — преобразует значение, если оно присутствует.
+- **`flatMap()`** — аналогично `map()`, но применяется, если результат — это еще один `Optional`.
+- **`orElse()`, `orElseGet()`, `orElseThrow()`** — возвращает значение или выполняет действие, если значение отсутствует.
+
+#### Пример работы с `Optional`:
+
+```java
+import java.util.Optional;
+
+public class OptionalExample {
+    public static void main(String[] args) {
+        Optional<String> optionalValue = Optional.of("Hello");
+
+        // filter: Проверяем значение на соответствие предикату
+        optionalValue.filter(value -> value.length() > 3)
+                     .ifPresent(value -> System.out.println("Filtered Value: " + value));
+
+        // map: Преобразуем строку в верхний регистр
+        optionalValue.map(String::toUpperCase)
+                     .ifPresent(value -> System.out.println("Mapped Value: " + value));
+
+        // flatMap: Если Optional содержит другой Optional
+        Optional<Optional<String>> nestedOptional = Optional.of(Optional.of("Nested Value"));
+        nestedOptional.flatMap(opt -> opt)
+                      .ifPresent(value -> System.out.println("Flat Mapped Value: " + value));
+    }
+}
+```
+
+#### 2. `Stream`
+API для работы с коллекциями в функциональном стиле. Позволяет работать с последовательностями данных через такие методы, как `filter()`, `map()`, `findFirst()`, `findAny()` и другие.
+
+#### Основные методы `Stream`:
+- **`filter()`** — фильтрует элементы по заданному предикату.
+- **`map()`** — преобразует элементы.
+- **`flatMap()`** — используется для преобразования вложенных структур (например, `List<List<T>>` в `List<T>`).
+- **`findFirst()`, `findAny()`** — находят первый или любой элемент, соответственно.
+- **`collect()`** — собирает элементы в нужную структуру (например, в список, множество).
+
+#### Пример работы с `Stream`:
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<String> flowers = Arrays.asList("Ромашка", "Роза", "Тюльпан", "Лилия");
+
+        // filter: Фильтрация элементов, начинающихся с 'Р'
+        List<String> filteredFlowers = flowers.stream()
+                                              .filter(flower -> flower.startsWith("Р"))
+                                              .collect(Collectors.toList());
+        System.out.println("Filtered Flowers: " + filteredFlowers);
+
+        // map: Преобразуем каждый цветок в верхний регистр
+        List<String> upperFlowers = flowers.stream()
+                                           .map(String::toUpperCase)
+                                           .collect(Collectors.toList());
+        System.out.println("Uppercase Flowers: " + upperFlowers);
+
+        // findFirst: Найдем первый цветок
+        Optional<String> firstFlower = flowers.stream()
+                                              .findFirst();
+        firstFlower.ifPresent(flower -> System.out.println("First Flower: " + flower));
+
+        // findAny: Найдем любой цветок
+        Optional<String> anyFlower = flowers.stream()
+                                            .findAny();
+        anyFlower.ifPresent(flower -> System.out.println("Any Flower: " + flower));
+    }
+}
+```
+
+#### 3. Работа с `Collectors`
+Класс `Collectors` предоставляет несколько полезных методов для сбора данных из `Stream`. Например:
+- **`toList()`** — собирает элементы потока в список.
+- **`toSet()`** — собирает элементы в множество.
+- **`joining()`** — объединяет элементы в строку.
+
+#### Пример использования `Collectors`:
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class CollectorsExample {
+    public static void main(String[] args) {
+        List<String> flowers = Arrays.asList("Ромашка", "Роза", "Тюльпан", "Лилия");
+
+        // Collectors.toList(): Сбор в список
+        List<String> flowerList = flowers.stream()
+                                         .filter(flower -> flower.length() > 4)
+                                         .collect(Collectors.toList());
+        System.out.println("Filtered Flowers List: " + flowerList);
+
+        // Collectors.joining(): Объединение элементов в строку
+        String flowerString = flowers.stream()
+                                     .collect(Collectors.joining(", "));
+        System.out.println("Flower String: " + flowerString);
+    }
+}
+```
+
+### Заключение
+
+- **`Optional`** предоставляет методы для безопасной работы с потенциально `null` значениями.
+- **`Stream`** позволяет работать с коллекциями в функциональном стиле, используя такие методы, как `filter()`, `map()`, `findFirst()` и другие.
+- **`Collectors`** предлагает способы для сбора данных из потоков, такие как `toList()`, `toSet()`, `joining()`.
+
+Эти инструменты делают код чище и проще в поддержке, особенно при работе с большими объемами данных.
