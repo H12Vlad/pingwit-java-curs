@@ -20,10 +20,10 @@ public class PhoneCollection {
 
         List<String> preferredPhones = phones.stream()
                 .filter(phone -> allowedProducers.contains(phone.producer()))
-                .map(Phone::producer)
+                .map(Phone::producer)// поменяй местами .filter() и .map() -> map после этого необходимо будет немного обновить, зато код будет красивее
                 .distinct()
                 .toList();
 
-        System.out.println("Список нужных производиделей: " + preferredPhones);
+        System.out.println("Список нужных производиделей: " + preferredPhones);// опечатка в слове "производиделей"
     }
 }

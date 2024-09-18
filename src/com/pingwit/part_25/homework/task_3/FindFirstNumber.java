@@ -12,5 +12,15 @@ public class FindFirstNumber {
                 .findFirst();
 
         System.out.println(result);
+
+        /*
+        твой вариант ок, ниже вариант тебе на будущее :)
+
+        numbers.stream()
+                .filter(num -> num > 22)
+                .findFirst()
+                .ifPresent(System.out::println);  System.out::println это сокращенная форма от num -> System.out.println(num)
+
+         */
     }
 }

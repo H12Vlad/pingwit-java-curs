@@ -22,8 +22,9 @@ public class CarCollection {
                 .collect(Collectors.groupingBy(Car::manufacturer));
 //Саша,какой вывод на Экран будет правильным ?
         carsByManufacturer.forEach((manufacturer, carList) ->
-                System.out.println(manufacturer)
+                System.out.println(manufacturer) // здесь ты выводишь производителя, а в след строке добавь вывод на экран переменной carList
+                // если нажмешь control и наведешь мышку на переменную carList, то увидишь что это коллекция автомобилей
         );
-        System.out.println(carsByManufacturer);
+        System.out.println(carsByManufacturer); // этот вывод можно убрать, он не очень красивый для восприятия
     }
 }

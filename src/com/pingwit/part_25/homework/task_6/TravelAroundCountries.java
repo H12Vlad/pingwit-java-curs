@@ -28,6 +28,7 @@ public class TravelAroundCountries {
         Path filePath = Paths.get("src/com/pingwit/part_25/homework/task_6/unique_cities.txt");
 
         try {
+            // старайся не делать таких сложных конструкций, вынеси получение списка городов в отдельную переменную
             Files.write(filePath, travelers.stream()
                     .map(traveler -> traveler.name() + ": " +
                             traveler.countries().stream()
@@ -39,7 +40,7 @@ public class TravelAroundCountries {
                     .toList());
 
             System.out.println("Unique cities added to: " + filePath.toAbsolutePath());
-        } catch (Exception e) {
+        } catch (Exception e) { // если оставляешь блок catch совсем пустым, то просто пробрасывай исключение наверх, не используя try-catch
         }
     }
 }
