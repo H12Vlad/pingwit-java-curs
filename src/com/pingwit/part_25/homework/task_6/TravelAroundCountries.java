@@ -1,5 +1,6 @@
 package com.pingwit.part_25.homework.task_6;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TravelAroundCountries {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<Traveler> travelers = new ArrayList<>();
         travelers.add(new Traveler("Vlad", List.of(
                 new Country("Poland", List.of("Wroclaw", "Krakow", "Bielsko-Biala")),
@@ -27,20 +28,19 @@ public class TravelAroundCountries {
 
         Path filePath = Paths.get("src/com/pingwit/part_25/homework/task_6/unique_cities.txt");
 
-        try {
-            // старайся не делать таких сложных конструкций, вынеси получение списка городов в отдельную переменную
-            Files.write(filePath, travelers.stream()
-                    .map(traveler -> traveler.name() + ": " +
-                            traveler.countries().stream()
-                                    .flatMap(country -> country.cities().stream())
-                                    .collect(Collectors.toSet())
-                                    .stream()
-                                    .collect(Collectors.joining(", "))
-                    )
-                    .toList());
+        List<String> uniqueCitiesPerTraveler = travelers.stream()
+                .map(traveler -> {
+                    String cities = traveler.countries().stream()
+                            .flatMap(country -> country.cities().stream())
+                            .collect(Collectors.toSet())
+                            .stream()
+                            .collect(Collectors.joining(", "));
+                    return traveler.name() + ": " + cities;
+                })
+                .toList();
 
-            System.out.println("Unique cities added to: " + filePath.toAbsolutePath());
-        } catch (Exception e) { // если оставляешь блок catch совсем пустым, то просто пробрасывай исключение наверх, не используя try-catch
-        }
+        Files.write(filePath, uniqueCitiesPerTraveler);
+
+        System.out.println("Unique cities added to: " + filePath.toAbsolutePath());
     }
 }

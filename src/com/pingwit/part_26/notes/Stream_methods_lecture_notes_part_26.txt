@@ -1,0 +1,146 @@
+### Методы Stream в Java
+
+Stream API предоставляет множество методов для работы с последовательностями данных,
+таких как коллекции, массивы и т.д. Рассмотрим основные методы, которые вы упомянули.
+
+### 1. **Методы `min()` и `max()`**
+
+Эти методы позволяют найти минимальное и максимальное значения в стриме.
+
+- `min()`: Возвращает минимальный элемент по заданному компаратору.
+- `max()`: Возвращает максимальный элемент по заданному компаратору.
+
+Пример:
+
+```java
+List<Integer> numbers = Arrays.asList(5, 3, 9, 2, 8);
+
+Optional<Integer> minNumber = numbers.stream().min(Integer::compareTo);
+Optional<Integer> maxNumber = numbers.stream().max(Integer::compareTo);
+
+System.out.println("Минимальное число: " + minNumber.orElse(-1));
+System.out.println("Максимальное число: " + maxNumber.orElse(-1));
+```
+
+### 2. **Метод `skip()`**
+
+`skip(long n)` пропускает первые `n` элементов в стриме и возвращает новый стрим без этих элементов.
+
+Пример:
+
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+
+names.stream()
+     .skip(2)  // Пропускаем первые два элемента
+     .forEach(System.out::println);  // Вывод: Charlie, David
+```
+
+### 3. **Метод `limit()`**
+
+`limit(long maxSize)` возвращает стрим, содержащий только первые `maxSize` элементов.
+
+Пример:
+
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+
+names.stream()
+     .limit(2)  // Ограничиваем стрим первыми двумя элементами
+     .forEach(System.out::println);  // Вывод: Alice, Bob
+```
+
+### 4. **Методы `allMatch()`, `anyMatch()`, `noneMatch()`**
+
+Эти методы проверяют, удовлетворяют ли элементы стрима некоторому условию.
+
+- `allMatch(Predicate)`: Возвращает `true`, если все элементы удовлетворяют условию.
+- `anyMatch(Predicate)`: Возвращает `true`, если хотя бы один элемент удовлетворяет условию.
+- `noneMatch(Predicate)`: Возвращает `true`, если ни один элемент не удовлетворяет условию.
+
+Пример:
+
+```java
+List<Integer> numbers = Arrays.asList(2, 4, 6, 8);
+
+boolean allEven = numbers.stream().allMatch(n -> n % 2 == 0);  // true
+boolean anyOdd = numbers.stream().anyMatch(n -> n % 2 != 0);   // false
+boolean noneOdd = numbers.stream().noneMatch(n -> n % 2 != 0); // true
+```
+
+### 5. **Метод `distinct()`**
+
+`distinct()` удаляет дубликаты в стриме.
+
+Пример:
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 2, 3, 4, 4, 5);
+
+numbers.stream()
+       .distinct()
+       .forEach(System.out::println);  // Вывод: 1, 2, 3, 4, 5
+```
+
+### 6. **Метод `concat()`**
+
+Метод `Stream.concat(Stream s1, Stream s2)` объединяет два стрима в один.
+
+Пример:
+
+```java
+Stream<String> stream1 = Stream.of("A", "B", "C");
+Stream<String> stream2 = Stream.of("D", "E", "F");
+
+Stream<String> concatenatedStream = Stream.concat(stream1, stream2);
+concatenatedStream.forEach(System.out::println);  // Вывод: A, B, C, D, E, F
+```
+
+### 7. **Метод `sorted()`**
+
+`sorted()` сортирует элементы стрима. Можно использовать естественный порядок элементов или передать свой компаратор.
+
+Пример:
+
+```java
+List<String> names = Arrays.asList("Charlie", "Alice", "Bob");
+
+names.stream()
+     .sorted()
+     .forEach(System.out::println);  // Вывод: Alice, Bob, Charlie
+
+names.stream()
+     .sorted(Comparator.reverseOrder())  // Сортировка в обратном порядке
+     .forEach(System.out::println);  // Вывод: Charlie, Bob, Alice
+```
+
+### 8. **Метод `reduce()`**
+
+`reduce()` используется для сведения всех элементов стрима к одному значению с использованием бинарной операции.
+
+Пример (сумма всех чисел):
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+int sum = numbers.stream()
+                 .reduce(0, Integer::sum);
+
+System.out.println("Сумма: " + sum);  // Вывод: Сумма: 15
+```
+
+Пример (конкатенация строк):
+
+```java
+List<String> words = Arrays.asList("Hello", "world", "Java");
+
+String sentence = words.stream()
+                       .reduce("", (a, b) -> a + " " + b);
+
+System.out.println(sentence.trim());  // Вывод: Hello world Java
+```
+
+---
+
+Эти методы позволяют гибко и удобно обрабатывать данные, выполняя различные операции, такие как фильтрация,
+ сортировка, сведение, и другие.

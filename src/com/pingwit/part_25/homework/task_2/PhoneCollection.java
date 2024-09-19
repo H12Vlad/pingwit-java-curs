@@ -19,8 +19,8 @@ public class PhoneCollection {
         List<String> allowedProducers = List.of("Apple", "Samsung", "Xiaomi");
 
         List<String> preferredPhones = phones.stream()
-                .filter(phone -> allowedProducers.contains(phone.producer()))
-                .map(Phone::producer)// поменяй местами .filter() и .map() -> map после этого необходимо будет немного обновить, зато код будет красивее
+                .map(Phone::producer)
+                .filter(allowedProducers::contains)
                 .distinct()
                 .toList();
 
